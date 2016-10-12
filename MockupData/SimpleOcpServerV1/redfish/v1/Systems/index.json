@@ -4,7 +4,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/12M220100SL"
+            "@odata.id": "/redfish/v1/Systems/2M220100SL"
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
