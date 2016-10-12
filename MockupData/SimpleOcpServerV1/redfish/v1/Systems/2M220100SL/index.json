@@ -1,6 +1,6 @@
 {
     "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
-    "Id": "1",
+    "Id": "2M220100SL",
     "Name": "Catfish System",
     "SystemType": "Physical",
     "AssetTag": "CATFISHASSETTAG",
@@ -35,12 +35,12 @@
         ]
     },
     "LogServices": {
-        "@odata.id": "/redfish/v1/Systems/1/LogServices"
+        "@odata.id": "/redfish/v1/Systems/2M220100SL/LogServices"
     },
     "Links": {
         "Chassis": [
             {
-                "@odata.id": "/redfish/v1/Chassis/1"
+                "@odata.id": "/redfish/v1/Chassis/A33"
             }
         ],
         "ManagedBy": [
@@ -52,7 +52,7 @@
     },
     "Actions": {
         "#ComputerSystem.Reset": {
-            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "target": "/redfish/v1/Systems/2M220100SL/Actions/ComputerSystem.Reset",
             "ResetType@Redfish.AllowableValues": [
                 "On",
                 "ForceOff",
@@ -65,6 +65,6 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/1",
+    "@odata.id": "/redfish/v1/Systems/2M220100SL",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
