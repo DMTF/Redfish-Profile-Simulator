@@ -23,16 +23,16 @@
     "Links": {
         "ManagerForServers": [
             {
-                "@odata.id": "/redfish/v1/Systems/1"
+                "@odata.id": "/redfish/v1/Systems/2M220100SL"
             }
         ],
         "ManagerForChassis": [
             {
-                "@odata.id": "/redfish/v1/Chassis/1"
+                "@odata.id": "/redfish/v1/Chassis/A33"
             }
         ],
         "ManagerInChassis": {
-            "@odata.id": "/redfish/v1/Chassis/1"
+            "@odata.id": "/redfish/v1/Chassis/A33"
         },		
         "Oem": {}
     },

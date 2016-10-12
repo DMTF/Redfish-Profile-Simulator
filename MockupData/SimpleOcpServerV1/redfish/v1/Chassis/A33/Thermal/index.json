@@ -4,7 +4,7 @@
     "Name": "Thermal",
     "Temperatures": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Temperatures/0",
             "MemberId": "0",
             "Name": "Inlet Temp",
             "SensorNumber": 42,
@@ -21,7 +21,7 @@
             "PhysicalContext": "Intake"
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/1",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Temperatures/1",
             "MemberId": "1",
             "Name": "Board Temp",
             "SensorNumber": 43,
@@ -38,7 +38,7 @@
             "PhysicalContext": "SystemBoard"
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/2",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Temperatures/2",
             "MemberId": "2",
             "Name": "CPU1 Temp",
             "SensorNumber": 44,
@@ -54,7 +54,7 @@
             "PhysicalContext": "CPU"
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/3",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Temperatures/3",
             "MemberId": "3",
             "Name": "CPU2 Temp",
             "SensorNumber": 45,
@@ -72,7 +72,7 @@
     ],
     "Fans": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Fans/0",
             "MemberId": "0",
             "Name": "BaseBoard System Fan 1",
             "PhysicalContext": "Backplane",
@@ -92,12 +92,12 @@
             "MaxReadingRange": 5000,
             "Redundancy": [
                 {
-                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"
+                    "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Redundancy/0"
                 }
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Fans/1",
             "MemberId": "1",
             "Name": "BaseBoard System Fan 2",
             "PhysicalContext": "Backplane",
@@ -117,22 +117,22 @@
             "MaxReadingRange": 5000,
             "Redundancy": [
                 {
-                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"
+                    "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Redundancy/0"
                 }
             ]
         }
     ],
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0",
+            "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Redundancy/0",
             "MemberId": "0",
             "Name": "BaseBoard System Fans",
             "RedundancySet": [
                 {
-                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0"
+                    "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Fans/0"
                 },
                 {
-                    "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1"
+                    "@odata.id": "/redfish/v1/Chassis/A33/Thermal#/Fans/1"
                 }
             ],
             "Mode": "N+m",
@@ -145,6 +145,6 @@
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
-    "@odata.id": "/redfish/v1/Chassis/1/Thermal",
+    "@odata.id": "/redfish/v1/Chassis/A33/Thermal",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -28,7 +28,7 @@
                 "Oem": {}
             },
             "Oem": {},
-            "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL/Entries/1"
+            "@odata.id": "/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries/1"
         },
         {
             "@odata.type": "#LogEntry.v1_0_2.LogEntry",
@@ -54,11 +54,11 @@
                 "Oem": {}
             },
             "Oem": {},
-            "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL/Entries/2"
+            "@odata.id": "/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries/2"
         }
     ],
-    "@odata.nextLink": "/redfish/v1/Systems/1/LogServices/SEL/Entries?$skiptoken=2",
+    "@odata.nextLink": "/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries?$skiptoken=2",
     "@odata.context": "/redfish/v1/$metadata#LogEntryCollection.LogEntryCollection",
-    "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL/Entries",
+    "@odata.id": "/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries",
     "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

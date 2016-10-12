@@ -1,6 +1,6 @@
 {
     "@odata.type": "#Chassis.v1_2_0.Chassis",
-    "Id": "1",
+    "Id": "A33",
     "Name": "Catfish System Chassis",
     "ChassisType": "RackMount",
     "Manufacturer": "CatfishManufacturer",
@@ -16,15 +16,15 @@
         "Health": "OK"
     },
     "Thermal": {
-        "@odata.id": "/redfish/v1/Chassis/1/Thermal"
+        "@odata.id": "/redfish/v1/Chassis/A33/Thermal"
     },
     "Power": {
-        "@odata.id": "/redfish/v1/Chassis/1/Power"
+        "@odata.id": "/redfish/v1/Chassis/A33/Power"
     },
     "Links": {
         "ComputerSystems": [
             {
-                "@odata.id": "/redfish/v1/Systems/1"
+                "@odata.id": "/redfish/v1/Systems/2M220100SL"
             }
         ],
         "ManagedBy": [
@@ -41,6 +41,6 @@
     },
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.id": "/redfish/v1/Chassis/1",
+    "@odata.id": "/redfish/v1/Chassis/A33",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

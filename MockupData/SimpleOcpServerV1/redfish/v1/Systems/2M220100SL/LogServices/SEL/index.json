@@ -14,14 +14,14 @@
     "Oem": {},
     "Actions": {
         "#LogService.ClearLog": {
-            "target": "/redfish/v1/Systems/1/LogServices/SEL/Actions/LogService.Reset"
+            "target": "/redfish/v1/Systems/2M220100SL/LogServices/SEL/Actions/LogService.Reset"
         },
         "Oem": {}
     },
     "Entries": {
-        "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL/Entries"
+        "@odata.id": "/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries"
     },
     "@odata.context": "/redfish/v1/$metadata#LogService.LogService",
-    "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL",
+    "@odata.id": "/redfish/v1/Systems/2M220100SL/LogServices/SEL",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
