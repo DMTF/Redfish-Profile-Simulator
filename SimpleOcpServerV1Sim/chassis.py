@@ -8,13 +8,13 @@ from .resource import RfResource
 class RfChassisCollection(RfResource):
     # create instance of each chassis in the collection
     def createSubObjects(self,basePath,relPath):
-        self.chassis1=RfChassisObj(basePath,os.path.normpath("redfish/v1/Chassis/1"))
+        self.chassis1=RfChassisObj(basePath,os.path.normpath("redfish/v1/Chassis/A33"))
 
 class RfChassisObj(RfResource):
     # create the dependent sub-objects that live under the chassis object
     def createSubObjects(self,basePath,relPath):
-        self.thermal=RfChassisThermal(basePath,os.path.normpath("redfish/v1/Chassis/1/Thermal"))
-        self.power=RfChassisPower(basePath,os.path.normpath("redfish/v1/Chassis/1/Power"))
+        self.thermal=RfChassisThermal(basePath,os.path.normpath("redfish/v1/Chassis/A33/Thermal"))
+        self.power=RfChassisPower(basePath,os.path.normpath("redfish/v1/Chassis/A33/Power"))
 
     def patchResource(self,patchData):
         #first verify client didn't send us a property we cant patch

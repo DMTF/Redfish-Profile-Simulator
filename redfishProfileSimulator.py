@@ -10,7 +10,7 @@ import sys
 import getopt
 import os
 
-rfVersion="0.9.1"
+rfVersion="0.9.2"
 rfProgram1="redfishProfileSimulator"
 rfProgram2="                "
 rfUsage1="[-Vh]  [--Version][--help]"

@@ -9,14 +9,14 @@ import os
 class RfSystemsCollection(RfResource):       
     # create instance of each system in the collection
     def createSubObjects(self,basePath,relPath):
-        self.system1=RfSystemObj(basePath,os.path.normpath("redfish/v1/Systems/1"))  
+        self.system1=RfSystemObj(basePath,os.path.normpath("redfish/v1/Systems/2M220100SL"))  
 
 class RfSystemObj(RfResource):   
     # create the dependent sub-objects that live under the System object
     def createSubObjects(self,basePath,relPath):      
-        #self.logs=RfLogServiceCollection(path,os.path.normpath("Systems/1/Logs"))
-        #self.logSel=RfLogService(path,os.path.normpath("Systems/1/Logs/SEL"))
-        #self.logSelEntries=RfLogEntries(path,os.path.normpath("Systems/1/Logs/SEL/Entries"))
+        self.logs=RfLogServiceCollection(basePath,os.path.normpath("redfish/v1/Systems/2M220100SL/LogServices"))
+        self.logSel=RfLogService(        basePath,os.path.normpath("redfish/v1/Systems/2M220100SL/LogServices/SEL"))
+        self.logSelEntries=RfLogEntries( basePath,os.path.normpath("redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries"))
         pass
     
     def getResource(self):
@@ -80,24 +80,24 @@ class RfSystemObj(RfResource):
 
 #subclass Logs Collection
 class RfLogServiceCollection(RfResource):
-    def createLogServiceObjects(self,path):                        
-        #self.log=self.RfSystemLogServiceObj(path,"Systems/1/SEL")
-        pass
+    def getResource(self):
+        #print("HERE")
+        self.response=json.dumps(self.resData,indent=4)
+        return(self.response)
             
   
 # sub sub class logService
 class RfLogService(RfResource):
-    def createLogEntryCollection(self,rfTime,rfSysInfo):                      
-        #self.logEntryCollection=self.RfSystemLogEntryCollection(rfTime,rfSysInfo)
-        pass
+    def getResource(self):
+        #print("HERE")
+        self.response=json.dumps(self.resData,indent=4)
+        return(self.response)
                 
 
 # sub/sub/sub class LogEntryCollection
-class RfLogEntryCollection(RfResource):
-    def createLogEntries(self,rfTime,rfSysInfo):
-        #self.logEntry1=self.RfSystemLogEntry1(rfTime,rfSysInfo)
-        pass
-                    
-    def getObject(self):
-        #self.response=json.dumps(self.objData,indent=4)
-        pass     
+class RfLogEntries(RfResource):
+    def getResource(self):
+        #print("HERE")
+        self.response=json.dumps(self.resData,indent=4)
+        return(self.response)
+

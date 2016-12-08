@@ -86,7 +86,7 @@ def rfApi_SimpleServer(root,versions,host="127.0.0.1",port=5000):
         return(resp)
 
     #rest/v1/systems/1    
-    @app.route("/redfish/v1/Systems/1", methods=['GET'])
+    @app.route("/redfish/v1/Systems/2M220100SL", methods=['GET'])
     @auth.rfAuthRequired
     def rfComputerSystem1():
             resp=root.systems.system1.getResource()
@@ -94,7 +94,7 @@ def rfApi_SimpleServer(root,versions,host="127.0.0.1",port=5000):
 
     
     #rest/v1/systems/1    
-    @app.route("/redfish/v1/Systems/1", methods=['PATCH'])
+    @app.route("/redfish/v1/Systems/2M220100SL", methods=['PATCH'])
     @auth.rfAuthRequired
     def rfComputerSystem1patch():
             rdata=request.get_json(cache=True)
@@ -107,7 +107,7 @@ def rfApi_SimpleServer(root,versions,host="127.0.0.1",port=5000):
 
 
     #rest/v1/systems/1    
-    @app.route("/redfish/v1/Systems/1/Actions/ComputerSystem.Reset", methods=['POST'])
+    @app.route("/redfish/v1/Systems/2M220100SL/Actions/ComputerSystem.Reset", methods=['POST'])
     @auth.rfAuthRequired
     def rfComputerSystem1reset():
             #print("in reset")
@@ -119,27 +119,27 @@ def rfApi_SimpleServer(root,versions,host="127.0.0.1",port=5000):
             else: # error
                 return("",statusCode)
             
-    '''
     #/rest/v1/systems/1/Logs
-    @app.route("/redfish/v1/Systems/1/Logs", methods=['GET']) 
+    @app.route("/redfish/v1/Systems/2M220100SL/LogServices", methods=['GET']) 
     def rfSystem1LogsCollection():
-            resp=root.systems.system1.logsCollection.getResource()
+            resp=root.systems.system1.logs.getResource()
             return(resp)
 
     #/rest/v1/systems/1/Logs/SEL
-    @app.route("/redfish/v1/Systems/1/Logs/SEL", methods=['GET']) 
+    @app.route("/redfish/v1/Systems/2M220100SL/LogServices/SEL", methods=['GET']) 
     def rfSystem1LogService():
-            resp=root.systems.system1.logsCollection.logService.getResource()
+            resp=root.systems.system1.logSel.getResource()
             return(resp)
         
     #/rest/v1/systems/1/Logs/SEL/Entries
-    @app.route("/redfish/v1/Systems/1/Logs/SEL/Entries", methods=['GET']) 
+    @app.route("/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries", methods=['GET']) 
     def rfSystem1LogEntryCollection():
-            resp=root.systems.system1.logsCollection.logService.logEntryCollection.getResource()
+            resp=root.systems.system1.logSelEntries.getResource()
             return(resp)
         
-    #/rest/v1/systems/1/Logs/SEL/Entries/1 -- this is a stub for 1st entry
-    @app.route("/redfish/v1/Systems/1/Logs/SEL/Entries/1", methods=['GET']) 
+    '''
+    #/rest/v1/systems/1/LogServices/SEL/Entries/1 -- this is a stub for 1st entry
+    @app.route("/redfish/v1/Systems/2M220100SL/LogServices/SEL/Entries/1", methods=['GET']) 
     def rfSystem1LogEntry1():
             resp=root.systems.system1.logsCollection.logService.logEntryCollection.logEntry1.getResource()
             return(resp)
@@ -152,19 +152,19 @@ def rfApi_SimpleServer(root,versions,host="127.0.0.1",port=5000):
         resp=root.chassis.getResource()
         return(resp)
     
-    @app.route("/redfish/v1/Chassis/1", methods=['GET'])
+    @app.route("/redfish/v1/Chassis/A33", methods=['GET'])
     @auth.rfAuthRequired
     def rfRackmountChassis1():
         resp=root.chassis.chassis1.getResource()
         return(resp)
     
-    @app.route("/redfish/v1/Chassis/1/Power", methods=['GET'])
+    @app.route("/redfish/v1/Chassis/A33/Power", methods=['GET'])
     @auth.rfAuthRequired
     def rfRackmountChassis1PowerMetrics():
         resp=root.chassis.chassis1.power.getResource()
         return(resp)
 
-    @app.route("/redfish/v1/Chassis/1/Power", methods=['PATCH'])
+    @app.route("/redfish/v1/Chassis/A33/Power", methods=['PATCH'])
     @auth.rfAuthRequired
     def rfChassisPowerpatch():
             #rawdata=request.data
@@ -177,7 +177,7 @@ def rfApi_SimpleServer(root,versions,host="127.0.0.1",port=5000):
                 return("",statusCode)
 
 
-    @app.route("/redfish/v1/Chassis/1/Thermal", methods=['GET'])
+    @app.route("/redfish/v1/Chassis/A33/Thermal", methods=['GET'])
     @auth.rfAuthRequired
     def rfRackmountChassis1ThermalMetrics():
         resp=root.chassis.chassis1.thermal.getResource()
