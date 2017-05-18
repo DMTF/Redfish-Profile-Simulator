@@ -3,6 +3,8 @@
 
 ## [0.9.5] - 2017-5-22
 - This is a major upgrade to get header processing, authentication, authorization, accountService, SessionService correct compared to an implementation and to remove any "ID" hard codings in the code.
+- Adds request header enforcement and generates proper response headers for the URI
+- added HEAD method for all APIs that implement GET
 - Account Service and SessionService
   - added password file cache so that we can add/delete users, change passwords, and authenticate against
   - supports role patch, role add, role delete
