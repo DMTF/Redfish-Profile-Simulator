@@ -1,0 +1,46 @@
+{
+"Rack1-PowerBay1": {
+    "Id": {
+        "0": {
+            "Name": "Psu1",
+            "Status": {"State": null, "Health": null },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACMidLine",
+            "PowerCapacityWatts": 2000,
+            "SerialNumber": null,
+            "Volatile": [ "LineInputVoltage", "LastPowerOutputWatts" ],
+            "RedundancyGroup": "0"
+            },
+        "1": {
+            "Name": "Psu2",
+            "Status": {"State": null, "Health": null },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACMidLine",
+            "PowerCapacityWatts": 2000,
+            "SerialNumber": null,
+            "Volatile": [ "LineInputVoltage", "LastPowerOutputWatts" ],
+            "RedundancyGroup": "0"
+            },
+        "2": {
+            "Name": "Psu3",
+            "Status": {"State": null, "Health": null },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACMidLine",
+            "PowerCapacityWatts": 2000,
+            "SerialNumber": null,
+            "Volatile": [ "LineInputVoltage", "LastPowerOutputWatts" ],
+            "RedundancyGroup": "0"
+            }
+    },
+    "RedundancyGroup": {
+        "0": {
+            "Name": "Shared Block-level Fans",
+            "Mode": "N+m",
+            "Status": {"State": null, "Health": null },
+            "MinNumNeeded": 11,
+            "MaxNumSupported": 12
+            }
+        }
+}
+}
+

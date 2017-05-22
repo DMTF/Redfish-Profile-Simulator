@@ -1,0 +1,157 @@
+{
+"Rack1-Block1-Sled1-Node1": { 
+    # STATIC BASE PROPERTIES
+    "Name": "G5 Computer System", 
+        # static string
+    "Description": "G5 Computer System Node",
+        # static string
+    "SystemType": "Physical",
+        # static string
+    "Manufacturer": "Dell",
+        # static string
+    "Model": "DCS6530",
+        # static string
+    "SKU": null,
+        # static string
+    "SerialNumber": null,
+        # static string
+    "PartNumber": null,
+        # static string
+    "UUID": null,
+        # static string
+
+    # NON-VOLATILE BASE PROPERTIES
+    "AssetTag": "",
+        # non-volatile string
+    "HostName": null,
+        # non-volatile string
+    "BiosVersion": null,
+        # non-volatile string
+
+    # VOLATILE PROPERTIES
+    "Volatile": ["IndicatorLED","PowerState" ]
+    "IndicatorLED": null,    #volatile default
+    "PowerState": null,      #volatile default
+
+    # VOLATILE BASE STATUS 
+    "Status": {"State": null, "Health": null},
+        # volatile status type
+
+    # BOOT SOURCE Propoerties
+    # non-volatile allowable values
+    "BootSourceAllowableValues": ["None","Pxe","Hdd","BiosSetup","Cd","Floppy"]
+    # the service supports all of these,   Enabled, Mode, and Target are generally required
+    "BootSourceVolatileProperties"=["BootSourceOverrideEnabled","BootSourceOverrideMode","BootSourceOverrideTarget",
+                                    "UefiTargetBootSourceOverride"]
+
+    # Static Action
+    #    if the system supports reset, ActionsResetAllowableValue will be initialized with the allowable values
+    "ActionsResetAllowableValues": ["On","ForceOff","GracefulShutdown","GracefulRestart","ForceRestart"],
+
+    # Static Links
+    # example: "ManagedBy": ["RackManager", "Rack1-PowerBay1-MC1", "Rack1-Block1-Bc"]
+    "ManagedBy": null,
+    "Chassis": null,
+    "PoweredBy": null,
+    "CooledBy":  null,
+    "EndPoints": null,
+
+    # BaseNavLinks -constructed by svc per svc standard
+    "BaseNavigationProperties": [ "Processors","EthernetInterfaces","SimpleStorage","Memory", 
+             "SecureBoot","Bios", "Storage" "NetworkInterfaces", "LogServices" ]
+        # "SecureBoot": null,        --  NavProp to SecureBoot.SecureBoot resource
+        # "Bios": null,              --  NavProp to a single Bios.Bios resource
+        # "Memory": "<mem coll>",    --  NavProp to MemoryCollection.MemoryCollection
+        # "Storage": "<stor coll>",  --  NavProp to StorageCollection.StorageCollection
+
+    # oem data
+    "OemDellG5MCBmcInfo": { "BmcVersion": null, "BmcIp": null, "BmcMac": null },
+    "OemRackScaleSystem": { "ProcessorSockets": 2, "MemorySockets": 16, "DiscoveryState": "Basic" },
+
+    # non-volatile processorSummary and MemorySummary structures
+    "ProcessorSummary": {"Count": null, "Model": null", "Status": {"State": null, "Health": null} },
+    "MemorySummary": {"TotalSystemMemoryGiB": null, "MemoryMirroring": null, "Status": {"State": null, "Health": null}},
+
+
+    # other navProperties that have separate db files
+    "hasTrustedModules=true
+    "hasPcieDevices=true
+    "hasPcieFunctions=true
+
+    # discovered by Static or G5Dynamic or Cached
+    "DiscoveredBy": "Static"
+}
+}
+
+
+
+#  The following properties are in systems.py that define the properteis supported by the service
+    # staticProperties=["Name","Description","SystemType","Manufacturer","Model","SKU","SerialNumber","PartNumber","UUID"]
+    # nonVolatile=["AssetTag","HostName","BiosVersion"]
+    # volatileProperties=["IndicatorLED","PowerState" ]
+    # bootSourceVolatileProperties=["BootSourceOverrideEnabled","BootSourceOverrideMode","BootSourceOverrideTarget",
+                              "UefiTargetBootSourceOverride"]
+    # non-volatile processorSummary and MemorySummary Properties
+    # processorSummaryProps={"Count": null, "Model": null", "Status": {"State": null, "Health": null} }
+    # memorySummaryProps={"TotalSystemMemoryGiB": null,"MemoryMirroring": null,"Status": {"State": null,"Health": null}}
+
+MemoryDb.json
+{
+<sysid>: {
+  "Id":
+       "Name": x,
+       "CapacityMiB": y
+       "y": y
+       "y": y
+       "y": y
+       "y": y
+       "y": y
+       "y": y
+  },
+}
+
+ProcessorDb.json
+{
+<sysid>: {
+  "ProcId":
+     "1": {
+       "x": x,
+       "y": y
+     },
+     "2": {
+       "x": x,
+       "y": y
+     }
+  },
+...
+}
+
+TrustedModulesDb.json
+{
+<sysid>: {
+    "Id":
+        "Name": null,
+        "InterfaceType": null,
+        "InterFaceTypeSelection": null,
+        "FirmwareVersion": null,
+        "FirmwareVersion2": null,
+        "Status": { "State": null, "Health": null }
+  },
+  ...
+}
+
+PcieDevicesDb.json
+<sysid>: {
+    "Id":
+        ...
+        "Name": null,
+        "Status": { "State": null, "Health": null }
+  },
+  ...
+}
+
+    # BaseNavLinks that are arrays
+    "PCIeDevices": ["NIC1","NIC2"],
+    "PCIeFunctions": ["NIC1/Functions/1", "NIC1/Functions/2"]
+
+

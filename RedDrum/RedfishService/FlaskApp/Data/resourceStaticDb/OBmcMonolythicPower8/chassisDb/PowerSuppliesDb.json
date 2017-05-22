@@ -1,0 +1,39 @@
+{
+"Ocp1": {
+    "Id": {
+        "0": {
+            "Name": "PSU1",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACMidLine",
+            "PowerCapacityWatts": 1000,
+            "SerialNumber": "ABCDEF1",
+            "Volatile": [ "LineInputVoltage", "LastPowerOutputWatts" ],
+            "LineInputVoltage": 244,
+            "LastPowerOutputWatts": 454,
+            "RedundancyGroup": "0"
+            },
+        "1": {
+            "Name": "PSU2",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACMidLine",
+            "PowerCapacityWatts": 1000,
+            "SerialNumber": "ABCDEF2",
+            "Volatile": [ "LineInputVoltage", "LastPowerOutputWatts" ],
+            "LineInputVoltage": 245,
+            "LastPowerOutputWatts": 455,
+            "RedundancyGroup": "0"
+            }
+    },
+    "RedundancyGroup": {
+        "0": {
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Mode": "N+m",
+            "MinNumNeeded": 1,
+            "MaxNumSupported": 2
+            }
+        }
+}
+}
+

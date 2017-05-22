@@ -8,6 +8,29 @@ is a Python34 real simulator of the "simple monolithic server" feature profile.
   *  For a monolithic Server
   *  Aligned with: OCP Remote Machine Management Spec feature set
 
+### v0.9.5 is a major upgrade based on the "RedDrum" RedfishService
+* see the CHANGELOG for upgraded features
+  * all authentication and authorization is now 100% supported, with multiple users
+    * BasicAuth or SessionAuth
+  * you can add users and roles
+  * all hard codings of IDs in the main Rest engine are removed.
+  * supports different front-end httpd configs or backends to handle real data (or simulatiosn)
+    * unless you use a front-end httpd (as described in the Httpd-Configs README, the base simulator
+      here runs only http
+* Limitations
+  * configureSelf is not working -- allws anyone to change any users passwords
+  * GET JsonSchemas and GET Registeries is not complete 
+  * 2nd level system resource not implemented since not in the Simple OCP profile
+  * the initial simulation backend doesnt handle power state change when the system is powered-off/on using an action
+    * easy fix, coming
+
+* how to invoke:
+  * pull the Redfish-Profile-Simulator to a local directory
+  * from that directory, run `python3.4 redDrum-RedfishService.py`
+  * the default IP/port is 127.0.0.1:5001
+  * the root user/password is root:calvin
+    * other users:   john:john123    jane:jane123     albert:albert123
+
 ### Description
 * Based on flask
 * Initial resources are loaded from a catfish mockup into python dictionary structures

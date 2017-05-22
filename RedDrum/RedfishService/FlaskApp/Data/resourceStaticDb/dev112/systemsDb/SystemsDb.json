@@ -1,0 +1,62 @@
+{
+"Rack1-Block1-Sled1-Node1": { 
+    "Name": "G5 Computer System", 
+    "Description": "G5 Computer System Node",
+    "SystemType": "Physical",
+    "Manufacturer": "Dell",
+    "Model": "DCS6530",
+    "SerialNumber": null,
+    "UUID": null,
+    "AssetTag": "",
+    "HostName": null,
+    "BiosVersion": null,
+    "Volatile": ["IndicatorLED","PowerState" ],
+    "Status": {"State": null, "Health": null},
+    "BaseNavigationProperties": [ "Processors","EthernetInterfaces","SimpleStorage","Memory"],
+    "ActionsResetAllowableValues": ["On","ForceOff","GracefulShutdown","GracefulRestart","ForceRestart"],
+    "OemDellG5MCBmcInfo": { "BmcVersion": null, "BmcIp": null, "BmcMac": null },
+    "OemRackScaleSystem": { "ProcessorSockets": 2, "MemorySockets": 16, "DiscoveryState": "Basic" },
+    "Patchable": ["AssetTag","IndicatorLED" ],
+
+    "hasOemRackScaleSystemInfo": true,
+    "Chassis": ["Rack1-Block1-Sled1"],
+    "ManagedBy": ["RackManager", "Rack1-PowerBay1-MC1", "Rack1-Block1-Bc"],
+
+    "BootSourceAllowableValues": ["None","Pxe","Hdd","BiosSetup","Cd","Floppy"],
+    "BootSourceVolatileProperties": ["BootSourceOverrideEnabled","BootSourceOverrideTarget"],
+    "BootSourcePatchableProperties": ["BootSourceOverrideEnabled","BootSourceOverrideTarget"],
+    "ProcessorSummary": {"Count": null,"Model": null,"Status": {"State": null,"Health": null} },
+    "MemorySummary": {"TotalSystemMemoryGiB": null,"Status": {"State": null,"Health": null}},
+
+    "DiscoveredBy": "Static"
+    },
+"Rack1-Block1-Sled2-Node1": { 
+    "Name": "G5 Computer System", 
+    "Description": "G5 Computer System Node",
+    "SystemType": "Physical",
+    "Manufacturer": "Dell",
+    "Model": "DCS6530",
+    "SerialNumber": null,
+    "UUID": null,
+    "AssetTag": "",
+    "HostName": null,
+    "BiosVersion": null,
+    "Volatile": ["IndicatorLED","PowerState" ],
+    "Status": {"State": null, "Health": null},
+    "BaseNavigationProperties": [ "Processors","EthernetInterfaces","SimpleStorage","Memory"],
+    "ActionsResetAllowableValues": ["On","ForceOff","GracefulShutdown","GracefulRestart","ForceRestart"],
+    "OemDellG5MCBmcInfo": { "BmcVersion": null, "BmcIp": null, "BmcMac": null },
+    "OemRackScaleSystem": { "ProcessorSockets": 2, "MemorySockets": 16, "DiscoveryState": "Basic" },
+
+    "hasOemRackScaleSystemInfo": true,
+    "Chassis": ["Rack1-Block1-Sled2"],
+    "ManagedBy": ["RackManager", "Rack1-PowerBay1-MC1", "Rack1-Block1-Bc"],
+
+    "BootSourceAllowableValues": ["None","Pxe","Hdd","BiosSetup","Cd","Floppy"],
+    "BootSourceVolatileProperties": ["BootSourceOverrideEnabled","BootSourceOverrideTarget"],
+    "ProcessorSummary": {"Count": null,"Model": null,"Status": {"State": null,"Health": null} },
+    "MemorySummary": {"TotalSystemMemoryGiB": null,"Status": {"State": null,"Health": null}},
+
+    "DiscoveredBy": "Static"
+    }
+}

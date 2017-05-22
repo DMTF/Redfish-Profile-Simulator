@@ -1,0 +1,18 @@
+{
+"OBMC1": { 
+    "Name": "Open-BMC", 
+    "Description": "System Baseboard Management Controller",
+    "ManagerType": "BMC",
+    "UUID": "12345678-abce-efgh-489239905423",
+    "ServiceEntryPointUUID": "01101010-abce-efgh-489239905799",
+    "Model": "OpenBMC",
+    "DateTime":  "2017-05-17T04:14:33+06:00",
+    "DateTimeLocalOffset": "+06:00",
+    "FirmwareVersion": "OBMC-1.33.4",
+    "Status": {"State": "Enabled", "Health": "OK"},
+    "ActionsResetAllowableValues": ["GracefulRestart","ForceRestart"],
+    "ManagerInChassis": "Ocp1",
+    "ManagerForChassis": ["Ocp1"],
+    "DiscoveredBy": "Static"
+    }
+}

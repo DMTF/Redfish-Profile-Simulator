@@ -1,0 +1,19 @@
+{
+"Ocp1": { 
+    "ChassisType": "Rack", 
+    "Name": "OCP_Chassis", 
+    "Description": "Monolythic OCP Chassis",
+    "Manufacturer": "Contoso",  
+    "Model": "Catfish1", 
+    "SerialNumber": "12345",
+    "AssetTag": "FISH1",
+    "Status": {"State": "Enabled", "Health": "OK"},
+    "BaseNavigationProperties": ["Thermal", "Power"],
+    "ActionsResetAllowableValues": ["On","ForceOff","GracefulShutdown","ForceRestart","GracefulRestart"],
+    "ManagedBy": ["OBMC1"],
+    "ComputerSystems": ["Sys1"],
+    "Patchable": ["IndicatorLED", "AssetTag"],
+    "Volatile": ["IndicatorLED", "PowerState" ],
+    "DiscoveredBy": "Static"
+    }
+}

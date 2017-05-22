@@ -1,0 +1,7 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionCollection.SessionCollection",
+    "@odata.type": "#SessionCollection.SessionCollection",
+    "Name": "RackManager Sessions Collection",
+    "Members@odata.count": 0,
+    "Members": [ ]
+}

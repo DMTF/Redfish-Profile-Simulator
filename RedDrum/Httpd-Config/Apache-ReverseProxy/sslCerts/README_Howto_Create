@@ -1,0 +1,57 @@
+
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+# STEPS TO ENABLE HTTPS on httpd:
+#
+# Note: this is all done by RMConfig when configuring httpd
+#
+# Step-1:
+#    verify you have mod_ssl in apache
+#    if not, install it: yum install mod_ssl openssl
+
+# Step-2:
+#    generate the SSL keys and certificates
+#    creates a self-signed cert for the serivce and saves to  ./sslCerts
+CFGPROFILE=`pwd`
+cd ${CFGPROFILE}/sslCerts
+
+# Step-2a:
+#    generagte private ssl key
+openssl genrsa -out ca.key 2048
+
+# Step-2b:
+#    generate CSR
+openssl req -new -key ca.key -out ca.csr
+
+#  see the RMConfig httpd config script -- this is executed non-interactively there
+
+# Step-2c:
+#    generate Self Signed Key
+openssl x509 -req -days 365 -in ca.csr -signkey ca.key -out ca.crt
+
+# Step-3:
+#    copy ssl certs/keys to native location Apache uses
+#    Note: the /etc/pki/tls/certs/localhost.crt and .../private/localhost.key files
+#          are created by the post install of mod_ssl and should already be there.
+#          Otherwise, they can be created similarly
+cp ${CFGPROFILE}/sslCerts/ca.crt /etc/pki/tls/certs/ca.crt
+cp ${CFGPROFILE}/sslCerts/ca.key /etc/pki/tls/private/ca.key
+cp ${CFGPROFILE}/sslCerts/ca.csr /etc/pki/tls/private/ca.csr
+
+# Step-4:
+#    configure httpd.conf VirtualServer for HTTPS:
+#    Note: this is included in the httpd.conf file setup by RMconfig, subsys httpd
+<VirtualServer *:443>
+SSLEngine on
+SSLCertificateFile /etc/pki/tls/certs/ca.crt
+SSLCertificateKeyFile /etc/pki/tls/private/ca.key
+
+# Step-5:
+#    set SELinux bools to allow httpd to forward
+#       the -P makes it persistent
+#    Note: this is included in the httpd.conf file setup by RMconfig, subsys httpd
+setsebool -P httpd_can_network_connect on
+
+

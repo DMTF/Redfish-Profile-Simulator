@@ -1,0 +1,45 @@
+# volatile Dict for: each chassisId
+# one entry for each chassisId that has a Fan
+#POLL STRATEGY:
+#  we will poll fans indireictly by reading fan sensors from iDrac
+#    poller will generate status
+{
+"Rack1": {
+},
+"Rack1-Block1": {
+    "FanId": {
+        "0": {
+            "Reading": 2010,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "1": {
+            "Reading": 2010,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "2": {
+            "Reading": 2010,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "3": {
+            "Reading": 2010,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "4": {
+            "Reading": 2010,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+      ...
+        "11": {
+            "Reading": 2010,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+},
+"Rack1-Block1-PowerBay1": {
+},
+"Rack1-Block1-Sled1": {
+},
+"Rack1-Block1-Sled2": {
+}
+
+}

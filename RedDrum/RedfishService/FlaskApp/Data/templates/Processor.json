@@ -1,0 +1,7 @@
+{
+  "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
+  "@odata.id": null,
+  "@odata.type": "#Processor.v1_0_3.Processor",
+  "Name": "Processor",
+  "Id": null
+}

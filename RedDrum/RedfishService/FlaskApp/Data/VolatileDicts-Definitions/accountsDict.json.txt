@@ -1,0 +1,18 @@
+# Accounts Dict
+# there is an entry for each accountId -- that is: each user
+{
+{
+"Ex-AccountId-for-root": {
+    "Locked": False",
+    "FailedLoginCount": 0,
+    "LockedTime": 0,
+    "ResetAfterTime": 0
+},
+{
+"Ex-AccountId-for-john": {
+    "Locked": False",
+    "FailedLoginCount": 0,
+    "LockedTime": 0,
+    "ResetAfterTime": 0
+}
+}

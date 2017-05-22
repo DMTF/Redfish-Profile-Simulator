@@ -1,0 +1,12 @@
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+
+This is the Backend RedDrum implementation for the "BullRed-RackManager"
+BullRed-RackManager is a large multi-threaded back-end for a multi-node rack-level Redfish Service
+        -- named "Bull Red" using the term for a "large" "Red Drum" redfish
+        -- uses Celery to schedule hw monitor tasks
+        -- runs a separate monitor for each BMC and ChassisManager 
+        -- uses a Redis database, as data for HWMonitor threads to communicate with the Flask Front-end
+

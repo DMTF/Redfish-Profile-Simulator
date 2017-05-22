@@ -1,0 +1,36 @@
+# volatile Dict for:  chassis 
+
+# 
+
+# EXAMPLE chassisVolatileDict for static config dev112
+#   
+{
+"Rack1": {
+    "PowerState":  "<powerState>",
+},
+"Rack1-Block1": {
+    "PowerState":  "<powerState>",
+    "Status": { "State": "<state>", "Health": "<health>" }
+},
+"Rack1-PowerBay1": {
+    "PowerState":  "<powerState>",
+    "Status": { "State": "<state>", "Health": "<health>" }
+},
+"Rack1-Block1-Sled1": {
+    "IndicatorLED": "<ledState>",
+    "PowerState":  "<powerState>",
+    "Status": { "State": "<state>", "Health": "<health>" }
+}
+"Rack1-Block1-Sled2": {
+    "IndicatorLED": "<ledState>",
+    "PowerState":  "<powerState>",
+    "Status": { "State": "<state>", "Health": "<health>" }
+}
+}
+
+
+# G5 POLL STRATEGY:
+#   the MC_POWERBAY_Poll_Monitor will get powerstate of PowerBays.
+#   if any powerbay is ON, then the rail is on, and Rack1 is on, and all blocks are on
+#   we will get Sled powerState from Idracs
+#   we will get Sled IndicatorLED from Idracs

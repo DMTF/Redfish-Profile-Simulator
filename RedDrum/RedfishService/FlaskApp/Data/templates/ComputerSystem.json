@@ -1,0 +1,9 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": null,
+    "@odata.type": "#ComputerSystem.v1_3_0.ComputerSystem",
+    "Name": null,
+    "Description": "",
+    "Links": {}
+}
+

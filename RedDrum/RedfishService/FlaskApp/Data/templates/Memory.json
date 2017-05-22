@@ -1,0 +1,7 @@
+{
+  "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
+  "@odata.id": null,
+  "@odata.type": "#Memory.v1_1_0.Memory",
+  "Name": null,
+  "Id": null
+}

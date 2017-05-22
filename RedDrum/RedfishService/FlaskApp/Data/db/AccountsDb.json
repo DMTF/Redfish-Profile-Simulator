@@ -1,0 +1,14 @@
+{
+"root": { 
+   "UserName": "root", "Password": "calvin", "RoleId": "Administrator", "Enabled": true, "Deletable": false 
+   },
+"john": { 
+   "UserName": "john", "Password": "john123", "RoleId": "Administrator", "Enabled": true, "Deletable": true 
+   },
+"jane": { 
+   "UserName": "jane", "Password": "jane123", "RoleId": "Operator", "Enabled": true, "Deletable": true 
+   },
+"albert": { 
+   "UserName": "albert", "Password": "albert123", "RoleId": "ReadOnlyUser", "Enabled": true, "Deletable": true 
+   }
+}

@@ -1,0 +1,8 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#MemoryCollection.MemoryCollection",
+    "@odata.type": "#MemoryCollection.MemoryCollection",
+    "@odata.id": null,
+    "Name": "Memory Collection",
+    "Members@odata.count": 0,
+    "Members": [ ]
+}

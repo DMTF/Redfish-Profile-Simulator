@@ -1,0 +1,8 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+    "@odata.id": null,
+    "@odata.type": "#EthernetInterface.v1_2_0.EthernetInterface",
+    "Id": null,
+    "Name": null,
+    "Description": null
+}

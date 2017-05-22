@@ -1,0 +1,55 @@
+# definition and content of managersVolatileDict   
+
+# There is an entry for each managerid
+{
+"<managerid1>": { <properties for manager-1> },
+"<managerid2>": { <properties for manager-2> },
+...
+"<manageridN>": { <properties for manager-N> }
+}
+
+
+# when it is created there is an empty record for each managerid:
+{
+"<managerid1>": {},
+"<managerid2>": {},
+...
+"<manageridN>": {}
+}
+
+
+# LEGAL properties that may be in managersVolatileDict:
+{
+"<managerid>": {
+    "IndicatorLED": "<state>",
+    "PowerState":   "<enum>",
+    "DateTime":    "<dateTime>",
+    "DateTimeLocalOffset":   "<offset>",
+    "Status": { "State": "<state>", "Health": "<health>"},
+},
+...
+}
+}
+
+
+# EXAMPLE content for static config: dev112 
+{
+"Rack1-Block1-Bc": { 
+    "Status": {"State": null, "Health": null},
+    },
+"Rack1-Block1-PowerBay1-Im": { 
+    "Status": {"State": null, "Health": null},
+    },
+"Rack1-Block1-PowerBay1-MC1": { 
+    "DateTime":  null,
+    "DateTimeLocalOffset": null,
+    "Status": {"State": null, "Health": null},
+    },
+"RackManager": { 
+    "DateTime":  null,
+    "DateTimeLocalOffset": null,
+    "Status": {"State": null, "Health": null},
+    }
+}
+
+

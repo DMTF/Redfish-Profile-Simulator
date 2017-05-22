@@ -1,0 +1,12 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionService.SessionService",
+    "@odata.id": "/redfish/v1/SessionService",
+    "@odata.type": "#SessionService.v1_0_0.SessionService",
+    "Id": "SessionService",
+    "Name": "RackManager Session Service",
+    "Description": "RackManager Session Service",
+    "SessionTimeout": null,
+    "Sessions": {
+        "@odata.id": "/redfish/v1/SessionService/Sessions"
+    }
+}

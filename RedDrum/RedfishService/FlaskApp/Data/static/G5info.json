@@ -1,0 +1,12 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#G5info.G5info",
+    "@odata.id": "/redfish/v1/G5info",
+    "@odata.type": "#G5info.v1_1_0.G5info",
+    "Id": "G5info",
+    "Name": "G5 RackManager Redfish Development Info",
+    "RedfishDevSpecVersion": "0.9.7a",
+    "RackManagerToolkitVersion": "RMv06",
+    "HTTPD": "Apache",
+    "RESTengine": "Flask",
+    "RedfishFeatureList": "1,2,3"
+}

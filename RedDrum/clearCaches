@@ -1,0 +1,28 @@
+# remove python caches
+CWD=`pwd`
+rm -r -f $CWD/__pycache__
+
+rm -r -f $CWD/Backend/__pycache__
+rm -r -f $CWD/Backend/Simulator/__pycache__
+rm -r -f $CWD/Backend/OpenBMC/__pycache__
+rm -r -f $CWD/Backend/BullRed-RackManager/__pycache__
+
+rm -r -f $CWD/RedfishService/__pycache__
+rm -r -f $CWD/RedfishService/FlaskApp/__pycache__
+rm -r -f $CWD/RedfishService/BottleApp/__pycache__
+
+rm -r -f $CWD/Httpd-Config/__pycache__
+rm -r -f $CWD/Httpd-Config/FlaskBuiltinHttpd/__pycache__
+rm -r -f $CWD/Httpd-Config/Apache-ReverseProxy/__pycache__
+rm -r -f $CWD/Httpd-Config/Rocket-ReverseProxy/__pycache__
+rm -r -f $CWD/Httpd-Config/BottleBuiltinHttpd/__pycache__
+
+
+# remove Local RedfishService Database caches under RedfishService: FlaskApp
+DBDIR="$CWD/RedfishService/FlaskApp/Data/var/www/rf"
+rm -f ${DBDIR}/chassisDb/*.json
+rm -f ${DBDIR}/db/*.json
+rm -f ${DBDIR}/managersDb/*.json
+rm -f ${DBDIR}/static/*.json
+rm -f ${DBDIR}/systemsDb/*.json
+

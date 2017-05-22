@@ -1,0 +1,7 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Power.Power",
+    "@odata.id": null,
+    "@odata.type": "#Power.v1_2_0.Power",
+    "Id": null,
+    "Name": null
+}

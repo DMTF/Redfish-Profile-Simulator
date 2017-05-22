@@ -1,0 +1,14 @@
+{
+"Administrator": {
+   "Name": "Administrator Role", "Description": "Pre-Defined Administrator Role", "IsPredefined": true, 
+   "AssignedPrivileges": ["Login","ConfigureManager","ConfigureUsers","ConfigureSelf","ConfigureComponents"] 
+   },
+"Operator": {
+   "Name": "Operator Role", "Description": "Pre-Defined Operator Role", "IsPredefined": true, 
+   "AssignedPrivileges": ["Login","ConfigureSelf","ConfigureComponents" ] 
+   },
+"ReadOnlyUser": { 
+   "Name": "ReadOnlyUser Role", "Description": "Pre-Defined ReadOnlyUser Role", "IsPredefined": true, 
+   "AssignedPrivileges": ["Login","ConfigureSelf" ] 
+   }
+}

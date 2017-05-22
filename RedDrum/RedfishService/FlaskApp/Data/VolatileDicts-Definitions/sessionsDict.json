@@ -1,0 +1,21 @@
+# Sessions Dict
+# there is an entry for each active session 
+{
+{
+"<sessionid-1>"" { 
+    "UserName": "<username1>",
+    "UserPrivileges": "<userPrivileges>",
+    "X-Auth-Token": "<authtoken>", 
+    "LocationUri": "<locationUri>",
+    "AccountId": "<accountId>",
+    "LastAccessTime": "<lastAccessTime>" 
+},
+"<sessionid-2>"" { 
+    "UserName": "<username1>",
+    "UserPrivileges": "<userPrivileges>",
+    "X-Auth-Token": "<authtoken>", 
+    "LocationUri": "<locationUri>",
+    "AccountId": "<accountId>",
+    "LastAccessTime": "<lastAccessTime>" 
+}
+}

@@ -1,0 +1,11 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#SimpleStorage.SimpleStorage",
+    "@odata.id": null,
+    "@odata.type": "#SimpleStorage.v1_1_1.SimpleStorage",
+    "Id": null,
+    "Description": null,
+    "Name": null,
+    "Devices": [ ]
+}
+
+

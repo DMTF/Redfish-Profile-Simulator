@@ -1,0 +1,32 @@
+# volatile Dict for: power suplies for  each chassisId
+# one entry for each chassisId that has a  power supply
+# POLL STRATEGY
+# PowerSupplies are polled  via MC as part of PowerBay_Power poll loop
+{
+"Rack1": {
+},
+"Rack1-Block1": {
+},
+"Rack1-PowerBay1": {
+    "Id": {
+        "0": {
+            "LineInputVoltage": 240, 
+            "LastPowerOutputWatts": 2000,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "1": {
+            "LineInputVoltage": 240, 
+            "LastPowerOutputWatts": 2000,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "2": {
+            "LineInputVoltage": 240, 
+            "LastPowerOutputWatts": 2000,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+       ... for up to 10 powerSupplies on G5
+    }
+},
+"Rack1-Block1-Sled1": {
+}
+

@@ -1,0 +1,16 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#JsonSchemaFileCOllection.JsonSchemaFIleCollection",
+    "@odata.id": "/redfish/v1/JsonSchemas",
+    "@odata.type": "#JsonSchemaFileCollection.JsonSchemaFileCollection",
+    "Name": "JSON Schema Repository",
+    "Description": "JSON Schema Repository Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/JsonSchemas/Chassis.v1_2_0"
+        },
+        {
+            "@odata.id": "/redfish/v1/JsonSchemas/ComputerSystem.1.0.1"
+        }
+    ]
+}

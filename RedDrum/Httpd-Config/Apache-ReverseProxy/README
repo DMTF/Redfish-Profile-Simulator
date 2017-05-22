@@ -1,0 +1,21 @@
+
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+
+--Apache-ReverseProxy
+    -- This is the httpd config used by the current BullRed-Rackmanager
+    -- Apache has a virtualHost for http and https
+    -- Apache handles all ssl and http processing and REVERSE PROXIES all /redfish/v1[/] traffic 
+       to the builtin httpd inside the RedfishService   (Flask if RedfishService=FlaskApp)
+    -- two conf files:  httpd.conf and ssl.conf
+    -- see the ./sslCerts/README_howto_create_certs file for description re how to generate the ssl certs
+    -- a bash script is here to show example requirement for disabling SElinux bouls and generating certs
+    -- the reverse proxy also generates a couple of headers to tell the RedfishService whether the request
+       originated on http or https
+    -- performance measured on Rackmanager is awesome---letting Apache handle ssl is nice
+       --Apache is running the ssl processing and socket handling multi-threaded and managing worker threads
+         to talk to the Flask RedfishService
+       --even though the Flask app is single threaded, a lot of the processing is thus done multi-threaded,
+         and performance for multithreaded clients is faster

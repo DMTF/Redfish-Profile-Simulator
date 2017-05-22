@@ -1,0 +1,76 @@
+{
+"Ocp1": {
+    "FanId": {
+        "0": {
+            "Name": "Fan1",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "Reading" ],
+            "Reading": 2501,
+            "LowerThresholdCritical": 500,
+            "ReadingUnits": "RPM",
+            "MinReadingRange": 0,
+            "MaxReadingRange": 25000,
+            "RedundancyGroup": "0"
+            },
+        "1": {
+            "Name": "Fan2",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "Reading" ],
+            "Reading": 2502,
+            "LowerThresholdCritical": 500,
+            "ReadingUnits": "RPM",
+            "MinReadingRange": 0,
+            "MaxReadingRange": 25000,
+            "RedundancyGroup": "0"
+            },
+        "2": {
+            "Name": "Fan3",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "Reading" ],
+            "Reading": 2503,
+            "LowerThresholdCritical": 500,
+            "ReadingUnits": "RPM",
+            "MinReadingRange": 0,
+            "MaxReadingRange": 25000,
+            "RedundancyGroup": "0"
+            },
+        "3": {
+            "Name": "Fan4",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "Reading" ],
+            "Reading": 2504,
+            "LowerThresholdCritical": 500,
+            "ReadingUnits": "RPM",
+            "MinReadingRange": 0,
+            "MaxReadingRange": 25000,
+            "RedundancyGroup": "0"
+            },
+        "4": {
+            "Name": "Fan5",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "Reading" ],
+            "Reading": 2505,
+            "LowerThresholdCritical": 500,
+            "ReadingUnits": "RPM",
+            "MinReadingRange": 0,
+            "MaxReadingRange": 25000,
+            "RedundancyGroup": "0"
+            }
+    },
+    "RedundancyGroup": {
+        "0": {
+            "Name": "Shared Chassis Fans",
+            "Mode": "N+m",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "MinNumNeeded": 3,
+            "MaxNumSupported": 4
+            }
+        }
+}
+}
+

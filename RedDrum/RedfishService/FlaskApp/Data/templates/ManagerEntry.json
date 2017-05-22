@@ -1,0 +1,11 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
+    "@odata.id": null,
+    "@odata.type": "#Manager.v1_1_0.Manager",
+    "Id": null,
+    "ManagerType": null,
+    "Name": "",
+    "Description": "",
+    "FirmwareVersion": null,
+    "Links": {}
+}

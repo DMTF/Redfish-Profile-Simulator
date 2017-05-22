@@ -1,0 +1,10 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Role.Role",
+    "@odata.id": null,
+    "@odata.type": "#Role.v1_0_0.Role",
+    "Id": null,
+    "Name": null,
+    "Description": null,
+    "IsPredefined": null,
+    "AssignedPrivileges": [ ]
+}

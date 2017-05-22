@@ -1,0 +1,20 @@
+
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+
+This is the RedfishService  for RedDrum 
+
+The RedDrum resources are created by instantiating RfServiceRoot() in serviceRoot.py
+
+The flask service is started by calling rfApi_RedDrum() in redfishURIs.py
+  usage: rfApi_RedDrum(rfr, rdm, host="127.0.0.1", port=5001)
+  where rfr is the rootData instance and rdm is the backend root instance.
+
+This is a Flask app that runs untreaded, and uses the builtin httpd to serve http requests.
+Use a front-end reverse proxy to proxy http and https to the flask service.
+
+Redfish Session Auth and Basic Auth is supported with the Redfish authorization/permission model.
+
+

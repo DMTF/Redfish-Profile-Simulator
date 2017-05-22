@@ -1,0 +1,34 @@
+
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+
+This is the Backend RedDrum implementation for the OpenBMC backend
+
+-- this code is a skeleton framework  for integrating with an open sourced BMC implementation
+
+-- code here includes templates for most  of the Pull APIs --where the front-end can pull data from back-end
+   -- transports for "Pushing" data to the front-end are commented-out.   
+     They have additional lib dependencies and the front-end has not implemented these yet.
+
+-- code for PUSH APIs is commented out--the Frontend RedfishService cant handle PUSH APIs yet
+
+*** Also the dynamic discovery APIs (where the Backend can add Resources to the RedfishService cache)
+    are not fully implemented so we will use "Static Discovery" for initial integration.
+    This is OK, sine there are not many resources to discover in a monolythic, and it reduces numbe of moving parts
+
+*** So for initial integration, this backend will use STATIC resource discovery **like the Simulation backend**
+   -- easy to do: we configure RedfishService to "load its database from cache", "use static discovery", and
+      to we define the "static discovery resource configuration"
+   -- the backend selects which config to load by changing RootData (rdr) variables
+      because the Backend is initialized before RedfishService
+
+***** We created a separate resource config for OpenBMC work in case we want to modify it w/o impacting Simulator
+      **Callin it  "OBmcMonolythicPower8"
+****  SEE:  RedDrum/RedfishService/FlaskApp/Data/resourceStaticDb/ObmcMonolythicPower8
+      **it is a:  one chassis (Id=Opc1), one system(Id=sys1), one manager (Id=OBMC1)
+      **    has:  4 fans, 2 power supplies, 1 processor(Power8), 64GB RAM
+
+*** later we can discover the resource dynamically from hwman
+

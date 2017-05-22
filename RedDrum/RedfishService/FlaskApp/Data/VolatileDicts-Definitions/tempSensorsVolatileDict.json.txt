@@ -1,0 +1,52 @@
+# volatile Dict for: tempSensors
+# one entry for each chassisId
+# POLL STRATEGY
+#   we will get temp sensors for sleds from Idrac.  the poller will update status
+#   the block inlet temp is also pusshed to sleds so we will read back from idrac
+{
+"Rack1": {
+},
+"Rack1-Block1": {
+    "Id": {
+        "0": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+},
+"Rack1-PowerBay1": {
+},
+"Rack1-Block1-Sled1": {
+    "Id": {
+        "0": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "1": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "2": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+},
+"Rack1-Block1-Sled2": {
+    "Id": {
+        "0": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "1": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "2": {
+            "ReadingCelsius": 37,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+}
+
+}

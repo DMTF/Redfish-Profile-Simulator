@@ -1,0 +1,28 @@
+
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+
+This is the Backend RedDrum implementation for the Simulator backend
+
+The Simulator currently  has minimal backend processing:
+  1) to translate Actions (eg power-off) into the appropriaate property statechanges in Chassis and System PowerState
+     *** this not yet implemented
+     *** so it currently does't reflect power changes when you poweron or poweroff
+
+The Simulator relies of choosing a static resource discovery config under the RedfishService 
+    -- that effectively "discovers" the Simlator resources from predefined static files 
+       the files are essentially file copies of the database Cache that the RedfishSerivce keeps when it wants to start
+       and reload its old resource cache instead of re-discovering everything.
+    -- so RedfishSerivce is just configured to restart from cache, and default to a pre-defined cache if no cache exists.
+       This is handy tool for test and for running as a simulator
+
+    -- we might move these default caches out to the backend, but for now, they are inide RedfishSerivce.
+    -- The backend CAN select WHICH static resource files to load from by changing RootData (rdr) variables
+       because the Backend is initialized before RedfishService
+    -- Therefore backendRoot, will set the required rfd properties to enable restartFromStatic Cache and setup the
+       proper static cache
+****** The platform setting for the cashed init data is "OcpFeatureProfile1"
+****   See:  RedDrum/RedfishService/FlaskApp/Data/resourceStaticDb/OcpFeatureProfile1
+

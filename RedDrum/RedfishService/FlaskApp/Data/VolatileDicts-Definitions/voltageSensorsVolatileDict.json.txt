@@ -1,0 +1,45 @@
+# volatile Dict for: voltage sensors
+# one entry for each chassisId
+# POLL STRATEGY:
+# MC_PowerBay_Power_Monitor
+#   PowerBay Power including voltages is in fast poll loop from MCs
+#   Sled voltages are read from IDRAC 
+{
+"Rack1": {
+},
+"Rack1-Block1": {
+},
+"Rack1-PowerBay": {
+    "Id": {
+        "0": {
+            "ReadingVolts": 243,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "1": {
+            "ReadingVolts": 0,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        },
+        "2": {
+            "ReadingVolts": 12.1,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+},
+"Rack1-Block1-Sled1": {
+    "Id": {
+        "0": {
+            "ReadingVolts": 12.1,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+},
+"Rack1-Block1-Sled2": {
+    "Id": {
+        "0": {
+            "ReadingVolts": 12.1,
+            "Status": { "State": "<state>", "Health": "<health>" }
+        }
+    }
+}
+
+}

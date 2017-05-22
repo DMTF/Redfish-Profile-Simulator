@@ -1,0 +1,14 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterfaceCollection.EthernetInterfaceCollection",
+    "@odata.id": "/redfish/v1/Managers/managedMC/EthernetInterfaces",
+    "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+    "Name": "G5MC_Enet_Interfaces",
+    "Description": "G5MC External Ethernet Interface Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/managedMC/EthernetInterfaces/eth1"
+        }
+    ],
+    "Oem": {}
+}

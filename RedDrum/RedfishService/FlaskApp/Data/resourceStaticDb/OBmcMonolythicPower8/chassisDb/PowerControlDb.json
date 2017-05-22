@@ -1,0 +1,18 @@
+{
+"Ocp1": {
+    "Id": {
+        "0": {
+            "Name": "Total_Chassis_Power_Consumed",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "PowerConsumedWatts": 540,
+            "Volatile": [ "PowerConsumedWatts" ]
+            },
+        "1": {
+            "Name": "PSU_Output_Power",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "PowerConsumedWatts": 450,
+            "Volatile": [ "PowerConsumedWatts" ]
+            }
+    }
+}
+}

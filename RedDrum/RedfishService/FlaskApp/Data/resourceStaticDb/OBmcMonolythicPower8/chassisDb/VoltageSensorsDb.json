@@ -1,0 +1,33 @@
+{
+"Ocp1": {
+    "Id": {
+        "0": {
+            "Name": "InputVoltage_AC",
+            "SensorNumber": 11,
+            "PhysicalContext": "PowerSupplyBay",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "ReadingVolts" ],
+            "ReadingVolts": 244,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 200,
+            "AddRelatedItems": ["system","chassis"]
+        },
+       "1": {
+            "Name": "PowerSupply-OutVoltage",
+            "SensorNumber": 12,
+            "PhysicalContext": "Backplane",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "ReadingVolts" ],
+            "ReadingVolts": 12.1,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20,
+            "UpperThresholdNonCritical": 13,
+            "LowerThresholdNonCritical": 11.5,
+            "UpperThresholdCritical": 14,
+            "LowerThresholdCritical": 11,
+            "AddRelatedItems": ["system","chassis"]
+        }
+    }
+}
+}
+

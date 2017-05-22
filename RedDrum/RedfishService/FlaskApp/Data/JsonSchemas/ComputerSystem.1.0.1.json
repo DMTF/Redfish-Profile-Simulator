@@ -1,0 +1,19 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#JsonSchemaFile.JsonSchemaFile",
+    "@odata.id": "/redfish/v1/JsonSchemas/ComputerSystem.1.0.1",
+    "@odata.type": "#JsonSchemaFile.1.0.1.JsonSchemaFile",
+    "Name": "Computer System Schema Definition File",
+    "Id": "ComputerSystem.1.0.1",
+    "Description": "Schema Definition for Computer System",
+    "Languages": [
+        "en"
+    ],
+    "Schema": "#ComputerSystem.1.0.1.ComputerSystem",
+    "Oem": {},
+    "Location": [
+        {
+            "Language": "en",
+            "PublicationUri": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.1.0.1.json"
+        }
+    ]
+}

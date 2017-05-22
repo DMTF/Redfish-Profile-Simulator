@@ -1,0 +1,49 @@
+{
+"<managerid>": { 
+    "Name": "Bc",    
+          # static string
+    "Description": "G5 Block Controller (BC)",
+         # static string
+    "ManagerType": "AuxiliaryController",
+         # static string
+    "UUID": "uuid-string",
+         # static uuid in uuid format
+    ServiceEntryPoint"UUID": "uuid-string",
+         # static service uuid in uuid format
+    "Model": "EE",
+         # static string
+    "FirmwareVersion": none,
+         # non-volatile string
+    "Status": {"State": null, "Health": null},
+         # volatile status type
+    "Volatiles": ["IndicatorLED, "PowerState", "DateTime", TateTimeLocalOffset" ],
+         # volatile properties 
+    "ActionsResetAllowableValues": ["GracefulRestart","ForceRestart"],
+         # if any allowable values, then Reset is added as an action
+         # the allowable values are in the list
+    "OemDellG5MCMgrInfo": { "LastUpdateStatus": null, "SafeBoot": null, "OpenLookupTableVersion": null},
+         # non-volatile properties set here
+         # these only change if there is a FW update
+    "ManagerInChassis": "<one-chassisid>",
+         # static link 
+    "ManagerForChassis": ["<chassisids>"],
+         # static link 
+    "ManagerForServers": ["<systemids>"],  
+         # static link 
+    "Patchable": ["DateTime", DateTimeOffset", "SerialConsole", "CommandShell","GraphicalConsole"],
+         # any property listed is writable.  Only volatile or non-volatile properties CAN be writable
+         # if SerialConsole,CommandShell,GraphicalConsole are listed as patchable, then only subprop "ServiceEnabled"
+         #    is writable, since all other subprops are not writable
+    "GraphicalConsole": {"ServiceEnabled": null,"MaxConcurrentSessions": 2, ConnectTypesSupported": ["KVMIP"]}
+         # includes all sub-properties.   non-volatile, cached here
+    "SerialConsole":    {"ServiceEnabled": null,"MaxConcurrentSessions": 2, ConnectTypesSupported": ["Telnet","SSH","IPMI"]}
+         # includes all sub-properties.   non-volatile, cached here
+    "CommandShell":     {"ServiceEnabled": null,"MaxConcurrentSessions": 2, ConnectTypesSupported": ["Telnet","SSH"]}
+         # includes all sub-properties.   non-volatile, cached here
+    "DiscoveredBy": "Static"
+},
+...
+}
+}
+
+

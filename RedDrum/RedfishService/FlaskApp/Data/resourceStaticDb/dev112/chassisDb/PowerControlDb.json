@@ -1,0 +1,52 @@
+{
+"Rack1": {
+    "Id": {
+        "0": {
+            "Name": "Rack_Total_Power_Consumed",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "PowerConsumedWatts" ]
+            }
+    }
+},
+"Rack1-Block1": {
+    "Id": {
+        "0": {
+            "Name": "Block_Fan_Power_Consumed",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "PowerConsumedWatts" ]
+            }
+    }
+},
+"Rack1-PowerBay1": {
+    "Id": {
+        "0": {
+            "Name": "Total_Power_Input",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "PowerConsumedWatts" ]
+            },
+        "1": {
+            "Name": "Total_Power_Output",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "PowerConsumedWatts" ]
+            }
+    }
+},
+"Rack1-Block1-Sled1": {
+    "Id": {
+        "0": {
+            "Name": "Sled_Power_Consumed",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "PowerConsumedWatts" ]
+            }
+    }
+},
+"Rack1-Block1-Sled2": {
+    "Id": {
+        "0": {
+            "Name": "Sled_Power_Consumed",
+            "Status": {"State": "Enabled", "Health": "OK" },
+            "Volatile": [ "PowerConsumedWatts" ]
+            }
+    }
+}
+}

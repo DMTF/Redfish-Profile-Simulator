@@ -1,0 +1,58 @@
+# volatile Dict for: Power Control
+# one entry for each chassisId 
+# only chassisids that have PowerControl ever get any data pushed to there
+# note that Status is static for PowerControl, so its not included here
+
+#POLL STRATEGY:
+# MC_Chassis_Power_Monitor
+#     The MC_Chassis_Power_Monitor will be polling for PowerBay power.
+#     it will do a GET /redfish/v1/Rack1-PowerBay<pb>/Power  query for each powerbay
+#     this data used to provide the powerBay Consumed watts.
+#     it will also add-up all of the power-bay powers to get the rack-level PowerConsumedWatts
+# MC_Block_Fan_Power_Monitor
+#     this is a slow poll--not that critical
+#     we will read fan power at start and whenever we see fans speed-change > n%---where fan speeds are read from idrac
+# IDRAC_Chassis_Power_Monitor
+#   sled power will come from iDracs
+
+{
+"Rack1": {
+    "Id": {
+        "0": {
+            "PowerConsumedWatts": 1101,
+        }
+    }
+},
+"Rack1-Block1": { 
+    "Id": {
+        "0": {
+            "PowerConsumedWatts": 1000,
+        }
+    }
+},
+"Rack1-Block1-PowerBay1": {
+    "Id": {
+        "0": {
+            "PowerConsumedWatts": 1100,
+        },
+        "1": {
+            "PowerConsumedWatts": 1000,
+        }
+    }
+},
+"Rack1-Block1-Sled1": {
+    "Id": {
+        "0": {
+            "PowerConsumedWatts": 500,
+        }
+    }
+},
+"Rack1-Block1-Sled2": {
+    "Id": {
+        "0": {
+            "PowerConsumedWatts": 400,
+        }
+    }
+}
+
+}

@@ -1,0 +1,9 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Session.Session",
+    "@odata.id": null,
+    "@odata.type": "#Session.v1_0_0.Session",
+    "Id": null,
+    "Name": "User Session Entry",
+    "UserName": null,
+    "Oem": {}
+}

@@ -1,0 +1,14 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": null,
+    "@odata.type": "#Chassis.v1_4_0.Chassis",
+    "Id": null, 
+    "Name": null,
+    "ChassisType": null,
+    "Description": "",
+    "Manufacturer": "",
+    "Model": "",
+    "Links": {}
+ }
+
+

@@ -1,0 +1,7 @@
+rm -f ./chassisDb/*.json
+rm -f ./db/*.json
+rm -f ./managersDb/*.json
+rm -f ./static/*.json
+rm -f ./systemsDb/*.json
+
+

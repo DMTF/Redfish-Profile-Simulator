@@ -1,0 +1,12 @@
+# remove python cache
+rm -r -f ./__pycache__
+
+# remove Local RedfishService Database caches
+DBDIR="./Data/var/www/rf"
+rm -f ${DBDIR}/chassisDb/*.json
+rm -f ${DBDIR}/db/*.json
+rm -f ${DBDIR}/managersDb/*.json
+rm -f ${DBDIR}/static/*.json
+rm -f ${DBDIR}/systemsDb/*.json
+
+

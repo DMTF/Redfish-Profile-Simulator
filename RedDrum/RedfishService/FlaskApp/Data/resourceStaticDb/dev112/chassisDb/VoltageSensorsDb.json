@@ -1,0 +1,73 @@
+{
+"Rack1-PowerBay1": {
+    "Id": {
+        "0": {
+            "Name": "InputVoltage_AC",
+            "SensorNumber": 11,
+            "PhysicalContext": "PowerSupplyBay",
+            "Status": {"State": null, "Health": null },
+            "Volatile": [ "ReadingVolts" ],
+            "MinReadingRange": 0,
+            "MaxReadingRange": 200
+        },
+        "1": {
+            "Name": "InputVoltage_DC",
+            "SensorNumber": 12,
+            "PhysicalContext": "PowerSupplyBay",
+            "Status": {"State": null, "Health": null },
+            "Volatile": [ "ReadingVolts" ],
+            "MinReadingRange": 0,
+            "MaxReadingRange": 200
+        },
+       "2": {
+            "Name": "OnputVoltage",
+            "SensorNumber": 13,
+            "PhysicalContext": "Backplane",
+            "Status": {"State": null, "Health": null },
+            "Volatile": [ "ReadingVolts" ],
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20,
+            "UpperThresholdNonCritical": 37,
+            "LowerThresholdNonCritical": 10,
+            "UpperThresholdCritical": 39,
+            "LowerThresholdCritical": 5,
+            "AddRelatedItems": ["G5Blocks","G5PowerBays"]
+        }
+    }
+},
+"Rack1-Block1-Sled1": {
+    "Id": {
+        "0": {
+            "Name": "Sled_Rail_Voltage",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": null, "Health": null },
+            "Volatile": [ "ReadingVolts" ],
+            "SensorNumber": 11,
+            "UpperThresholdNonCritical": 12.5,
+            "LowerThresholdNonCritical": 11.5,
+            "UpperThresholdCritical": 13,
+            "LowerThresholdCritical": 11,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20
+        }
+    }
+},
+"Rack1-Block1-Sled2": {
+    "Id": {
+        "0": {
+            "Name": "Sled_Rail_Voltage",
+            "PhysicalContext": "Backplane",
+            "Status": {"State": null, "Health": null },
+            "Volatile": [ "ReadingVolts" ],
+            "SensorNumber": 11,
+            "UpperThresholdNonCritical": 12.5,
+            "LowerThresholdNonCritical": 11.5,
+            "UpperThresholdCritical": 13,
+            "LowerThresholdCritical": 11,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20
+        }
+    }
+}
+}
+

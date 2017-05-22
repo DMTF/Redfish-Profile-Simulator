@@ -1,0 +1,27 @@
+{
+"sys1": { 
+    "Name": "Ocp Computer System", 
+    "Description": "Monolythic Rackmount OCP Computer System",
+    "SystemType": "Physical",
+    "Manufacturer": "Contoso",
+    "Model": "Catfish-99",
+    "SerialNumber": "123456",
+    "UUID": "01020304-abcd-efgh-4893434335333",
+    "AssetTag": "FISH1",
+    "IndicatorLED": "Off",
+    "HostName": "catfish",
+    "BiosVersion": "B52",
+    "Volatile": ["IndicatorLED","PowerState" ],
+    "Status": {"State": "Enabled", "Health": "OK"},
+    "ActionsResetAllowableValues": ["On","ForceOff","GracefulShutdown","GracefulRestart","ForceRestart"],
+    "Patchable": ["AssetTag","IndicatorLED" ],
+    "Chassis": ["Ocp1"],
+    "ManagedBy": ["OBMC1"],
+    "BootSourceAllowableValues": ["None","Pxe","Hdd","BiosSetup","Cd","Floppy"],
+    "BootSourceVolatileProperties": ["BootSourceOverrideEnabled","BootSourceOverrideTarget"],
+    "BootSourcePatchableProperties": ["BootSourceOverrideEnabled","BootSourceOverrideTarget"],
+    "ProcessorSummary": {"Count": 1,"Model": "Power8","Status": {"State": "Enabled","Health": "OK"} },
+    "MemorySummary": {"TotalSystemMemoryGiB": 32, "Status": {"State": "Enabled","Health": "OK"}},
+    "DiscoveredBy": "Static"
+    }
+}

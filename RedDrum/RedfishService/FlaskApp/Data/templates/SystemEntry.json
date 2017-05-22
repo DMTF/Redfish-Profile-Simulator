@@ -1,0 +1,100 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/Rack<r>-Block<b>-Sled<s>-Node1",
+    "@odata.type": "#ComputerSystem.v1_3_0.ComputerSystem",
+    "Id": "Rack<r>-Block<b>-Sled<s>-Node1",
+    "Name": "Computer System",
+    "SystemType": "Physical",
+    "AssetTag": null,
+    "Manufacturer": "Dell",
+    "Model": null,
+    "SerialNumber": null,
+    "Description": "Computer System Node",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "Status": {
+        "State": "<Enabled|Absent>",
+        "Health": "<OK|null>"
+    },
+    "IndicatorLED": "<Off|Lit|Blinking|Unknown>",
+    "PowerState": "<On|Off|null>",
+    "Boot": {
+	"BootSourceOverrideEnaled": "Disabled",
+	"BootSourceOverrideTarget": "Pxe",
+	"BootSourceOverrideTarget@Redfish.AllowableValues": [
+	    "None",
+	    "Pxe",
+	    "Hdd",
+	    "BiosSetup",
+	    "Cd",
+	    "Floppy"
+	]
+    },
+    "BiosVersion": "A01",
+    "HostName": null,
+    "ProcessorSummary": {
+        "Count": 2,
+        "Model": "Intel(R) Xeon(R) CPU E5-2667 V3 @ 3.20GHz",
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+        }
+    },
+    "MemorySummary": {
+        "TotalSystemMemoryGiB": 64,
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+        }
+    },
+    "Processors": {
+        "@odata.id": "/redfish/v1/Systems/Rack<r>-Block<b>-Sled<s>-Node1/Processors"
+    },
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Systems/Rack<r>-Block<b>-Sled<s>-Node1/EthernetInterfaces"
+    },
+    "SimpleStorage": {
+        "@odata.id": "/redfish/v1/Systems/Rack<r>-Block<b>-Sled<s>-Node1/SimpleStorage"
+    },
+    "Memory": {
+        "@odata.id": "/redfish/v1/Systems/Rack<r>-Block<b>-Sled<s>-Node1/Memory"
+    },
+    "Links": {
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Rack<r>-Block<b>-Sled<s>"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/Rack<r>-PowerBay<pb>-MC1"
+	    },
+	    {
+                "@odata.id": "/redfish/v1/Managers/Rack<r>-Block<b>-Bc"
+            }
+        ]
+    },
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target": "/redfish/v1/Systems/Rack<r>-Block<b>-Sled<s>-Node1/Actions/ComputerSystem.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "On",
+                "ForceOff",
+                "GracefulShutdown",
+                "ForceRestart",
+                "GracefulRestart"
+            ]
+        }
+    },
+    "Oem": {
+        "Dell_G5MC": {
+            "BmcVersion": "",
+	    "BmcIp": "",
+	    "BmcMac": ""
+         },
+        "Intel_RackScale": {
+            "DiscoveryState": "Basic --but include DiscoveryState property only if Redfish.conf, RsaDeepDiscovery=true",
+            "ProcessorSockets": 2,
+            "MemorySockets": 16
+         }
+    }
+}

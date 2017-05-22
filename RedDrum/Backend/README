@@ -1,0 +1,47 @@
+
+# Copyright Notice:
+# Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/LICENSE.md
+
+
+This directory contains a sub-directory for each  Red Drum "back-end" implementation defined.
+
+Back-ends are fairly implementation-specific and contain the code that the RedfishService Front-end uses
+   to get platform-specific data about resources.  Includes discovery and monitoring APIs.
+
+Edit __init__.py and un-comment the sub-directory related to the backend for this implementation
+only one sub-dir should be uncommented.
+
+Note that there are 2 types of backend APIs---Pull APIs and GET APIs
+  For the "PULL"  APIs, the RedfishService front-end calls this API to get data from the backend, or trigger an action
+     -- Pull APIs are used for fast-changing volatile data like sensors (eg fanspeed)
+     -- They are also used to tell the backend to implement an action--write Patch (eg AssetTag), or trigger discovery
+  For the "PUSH"  APIs, the Backend uses the API to "push" data to the RedfishService front-end
+     -- Push APIs are used by backend HW monitors to update the Front-end database with state-changes -- things
+        that change seldom and are generally saved by the front-end cache (like firmware version, adding/deleting
+        resources, etc)
+
+The three backends currently defined here with subdirectories include:
+
+ -- BullRed-RackManager 
+        -- a large multi-threaded back-end for a multi-node rack-level Redfish Service
+        -- named "Bull Red" using the term for a "large" "Red Drum" redfish
+        -- uses Celery to schedule hw monitor tasks
+        -- runs a separate monitor for each BMC and ChassisManager 
+        -- uses a Redis database, as data for HWMonitor threads to communicate with the Flask Front-end
+
+ -- Simulator
+        -- the simple simulator backend
+        -- the current simulator has minimal backend logic to translate Actions (eg power-off) into the appropriaate 
+           property statechanges in Chassis and System PowerState
+        -- it relies on setting the RedfishService to use the static cache and selects the "OcpFeatureProfile-Monolythic"
+           pre-defined static cache in Redfish.conf, with initial values set for all volatile sensor datasensor data.
+        -- later extensions will include some sensor variation during run-time.
+        -- TO DO--add the logic to change volatile states 
+
+ -- OpenBMC
+        -- place-holder for an open sourced BMC implementation
+        -- currently has templates for all of the Pull APIs --so that the front-end can pull data from back-end
+        -- transports for "Pushing" data to the front-end need additional dependency integration
+
+

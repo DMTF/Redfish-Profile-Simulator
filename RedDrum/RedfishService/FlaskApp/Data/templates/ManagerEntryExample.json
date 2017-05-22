@@ -1,0 +1,41 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
+    "@odata.id": "/redfish/v1/Managers/Rack<r>-Block<b>-Bc",
+    "@odata.type": "#Manager.v1_1_0.Manager",
+    "Id": "Rack<r>-Block<b>-Bc",
+    "Name": "Bc",
+    "ManagerType": "AuxiliaryController",
+    "Description": "G5 Block Controller (BC)",
+    "FirmwareVersion": "<stringFrom-FirmwareVersion>",
+    "Status": { 
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "ManagerForChassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Rack<r>-Block<b>"
+            }
+        ],
+	"ManagerInChassis": {
+		"@odata.id": "/redfish/v1/Chassis/Rack<r>-Block<b>"
+	}
+    },
+    "Actions": {
+        "#Manager.Reset": {
+            "target": "/redfish/v1/Managers/Rack<r>-Block<b>-Bc/Actions/Manager.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "GracefulRestart",
+                "ForceRestart"
+            ]
+        },
+        "Oem": {}
+    },
+    "Oem": {
+        "Dell_G5MC": {
+	    "LastUpdateStatus": "<stringFrom-LastUpgradeStatus>",
+	    "SafeBoot": "<stringFrom-SafeBoot>",
+	    "OpenLookupTableVeresion": "<verStringFrom-OpenLookupTableVersion>"
+        }
+    }
+}

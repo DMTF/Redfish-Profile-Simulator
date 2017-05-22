@@ -1,0 +1,58 @@
+{
+"Rack1-Block1-Bc": { 
+    "Name": "Bc", 
+    "Description": "G5 Block Controller (BC)",
+    "ManagerType": "AuxiliaryController",
+    "FirmwareVersion": null,
+    "Status": {"State": null, "Health": null},
+    "ActionsResetAllowableValues": ["GracefulRestart","ForceRestart"],
+    "ManagerInChassis": "Rack1-Block1",
+    "ManagerForChassis": ["Rack1-Block1"],
+    "OemDellG5MCMgrInfo": { "LastUpdateStatus": null, "SafeBoot": null, "OpenLookupTableVersion": null},
+    "DiscoveredBy": "Static"
+    },
+"Rack1-PowerBay1-Im": { 
+    "Name": "Im", 
+    "Description": "G5 Infrastructure Manager (IM)",
+    "ManagerType": "AuxiliaryController",
+    "FirmwareVersion": null,
+    "Status": {"State": null, "Health": null},
+    "ActionsResetAllowableValues": ["GracefulRestart","ForceRestart"],
+    "ManagerInChassis": "Rack1-PowerBay1",
+    "ManagerForChassis": ["Rack1-PowerBay1"],
+    "OemDellG5MCMgrInfo": { "LastUpdateStatus": null, "SafeBoot": null },
+    "DiscoveredBy": "Static"
+    },
+"Rack1-PowerBay1-MC1": { 
+    "Name": "managedMC", 
+    "Description": "G5 Managed MC in PowerBay ",
+    "ManagerType": "AuxiliaryController",
+    "UUID": null,
+    "ServiceEntryPointUUID": null,
+    "DateTime":  null,
+    "DateTimeLocalOffset": null,
+    "FirmwareVersion": null,
+    "Status": {"State": null, "Health": null},
+    "ActionsResetAllowableValues": ["GracefulRestart","ForceRestart"],
+    "ManagerInChassis": "Rack1-PowerBay1",
+    "ManagerForChassis": ["Rack1-PowerBay1"],
+    "OemDellG5MCMgrInfo": { "LastUpdateStatus": null },
+    "DiscoveredBy": "Static"
+    },
+"RackManager": { 
+    "Name": "RackManager", 
+    "Description": "G5 RackManager",
+    "ManagerType": "RackManager",
+    "UUID": null,
+    "ServiceEntryPointUUID": null,
+    "DateTime":  null,
+    "DateTimeLocalOffset": null,
+    "FirmwareVersion": null,
+    "Status": {"State": null, "Health": null},
+    "ActionsResetAllowableValues": ["GracefulRestart","ForceRestart"],
+    "ManagerInChassis": "Rack1-PowerBay1",
+    "ManagerForChassis": ["Rack1"],
+    "BaseNavigationProperties": ["NetworkProtocol", "EthernetInterfaces", "SerialInterfaces"],
+    "DiscoveredBy": "Static"
+    }
+}
