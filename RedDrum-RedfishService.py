@@ -33,9 +33,6 @@ def rfHelp():
         print("       -h,          --help,               --- help")
         print("       -H<hostIP>,  --Host=<hostIp>       --- host IP address. dflt=127.0.0.1")
         print("       -P<port>,    --Port=<port>         --- the port to use. dflt=5001")
-        print("       -L           --Local               --- run from local directory for testing")
-        print("")
-        print("")
         print("")
 
 
@@ -43,8 +40,6 @@ def main(argv):
     #set default option args
     rfHost="127.0.0.1"
     rfPort=5001
-    #isLocal=False
-    isLocal=True
     fromMS=False
 
     try:
@@ -61,8 +56,6 @@ def main(argv):
         elif opt in ("-V", "--Version"):
             print("Version:",rfVersion)
             sys.exit(0)
-        elif opt in ("-L", "--Local"):
-            isLocal=True
         elif opt in ("--Host="):
             rfHost=arg
         elif opt in ("--Port="):
@@ -75,14 +68,12 @@ def main(argv):
 
     print("{} Version: {}".format(rfProgram1,rfVersion))
     print("   Starting RedDrum Redfish Service at:  hostIP={},  port={}".format(rfHost, rfPort))
-    if isLocal:
-        print("   Local Execution")
 
     print("")
     print("")
     sys.stdout.flush()
     from RedDrum import redDrumMain as rdm
-    rdm.redDrumMain(isLocal=isLocal,rdHost=rfHost,rdPort=rfPort)
+    rdm.redDrumMain(rdHost=rfHost,rdPort=rfPort)
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -1,0 +1,2 @@
+graft RedDrum/RedDrum.conf
+graft RedDrum/RedfishService/FlaskApp/Data
