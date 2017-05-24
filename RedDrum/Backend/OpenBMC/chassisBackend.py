@@ -15,12 +15,33 @@ class  RdChassisBackend():
     def getVolatileChassisInfo(self,rdr,chassisid):
         #for this chasssis:
         resp=dict()
-        resp["IndicatorLED"]="Lit"                 # ledstate
-        resp["PowerState"]="On"                    # powerstate
+        resp["IndicatorLED"]="Blinking"                 # ledstate
+        resp["PowerState"]="Off"                        # powerstate
         resp["Status"]={"State": "Enabled", "Health": "OK"} #status
         nonVolatileDataChanged=False
         rc=0     # 0=ok
         return(rc,resp,nonVolatileDataChanged)
+
+    def getStaticDiscoveryChassisInfo(self,rdr,chassisid):
+        # for this chassis,
+        resp=dict()
+        resp["Manufacturer"]="IBM9"
+        resp["Model"]="Power9MB"
+        resp["SKU"]="1009"
+        resp["SerialNumber"]="999999"
+        resp["PartNumber"]="Power999"
+        rc=0     # 0=ok
+        return(rc,resp,nonVolatileDataChanged)
+
+    # *****  read non-volatile data  *****
+    # normally, the backend will push this if changes due to non-Redfish interface
+    # but implementing a get for debug and case where backend can push
+    def getNonVolatileChassisInfo(self,rdr,chassisid):
+        resp=dict()
+        #get assetTag()
+        resp["AssetTag"]="ASSET9"
+        rc=0 #     0=ok
+        return(rc,resp)
 
 
     # GET volatile Power Supplies readings
@@ -32,8 +53,8 @@ class  RdChassisBackend():
         resp=dict()
         for psu in psuidlist:
             memberData={} # empty dict
-            memberData["LineInputVoltage"]=240,
-            memberData["LastPowerOutputWatts"]=2000,
+            memberData["LineInputVoltage"]=299
+            memberData["LastPowerOutputWatts"]=2099
             memberData["Status"]={"State": "Enabled", "Health": "OK"}
             resp[psu]=memberData
  
@@ -49,7 +70,7 @@ class  RdChassisBackend():
         resp=dict()
         for fanid in fanidlist:
             memberData={} # empty dict
-            memberData["Reading"]=2347,
+            memberData["Reading"]=2399
             memberData["Status"]={"State": "Enabled", "Health": "OK"}
             resp[fanid]=memberData
         rc=0     # 0=ok
@@ -64,7 +85,7 @@ class  RdChassisBackend():
         resp=dict()
         for tempSensor in tempSensorsList:
             memberData={} # empty dict
-            memberData["ReadingCelsius"]=39,
+            memberData["ReadingCelsius"]=99
             memberData["Status"]={"State": "Enabled", "Health": "OK"}
             resp[tempSensor]=memberData
         rc=0     # 0=ok
@@ -79,7 +100,7 @@ class  RdChassisBackend():
         resp=dict()
         for voltSensor in voltageSensorsList:
             memberData={} # empty dict
-            memberData["ReadingVolts"]=241,
+            memberData["ReadingVolts"]=249
             memberData["Status"]={"State": "Enabled", "Health": "OK"}
             resp[voltSensor]=memberData
         rc=0     # 0=ok
@@ -96,7 +117,7 @@ class  RdChassisBackend():
         resp=dict()
         for powerControlId in powerControlList:
             memberData={} # empty dict
-            memberData["PowerConsumedWatts"]=1109
+            memberData["PowerConsumedWatts"]=1199
             resp[powerControlId]=memberData
         rc=0     # 0=ok
         return(rc,resp)
@@ -106,19 +127,24 @@ class  RdChassisBackend():
         if( resetType == "On"):
             # do powerOn - if powerstate is off, push power button
             # the service should have already verified power is off to get here
+            print("BACKEND: Power-on")
             pass
         elif( resetType == "ForceOff"):
             # do Hard Poweroff - eg hold power button down for 6 sec in a thread
+            print("BACKEND: Force-off")
             pass
         elif( resetType == "ForceRestart"):
             # do Hard powerOff, then powerOn - 
             #    - hold power button down 6 sec, then after powerOff, push button for .5 sec to turn-on
+            print("BACKEND: Force Restart")
             pass
         elif( resetType == "GracefulShutdown"):
             # do ACPI shutdown - if system is now on, press power button for .5 sec
+            print("BACKEND: Graceful shutdown ")
             pass
         elif( resetType == "GracefulRestart"):
             # do gracefulShutdown, then press power button to turn back on
+            print("BACKEND: Graceful Restart")
             pass
         else:
             return(9)    # invalid request
@@ -156,16 +182,6 @@ class  RdChassisBackend():
         assetTag="EXAMPLE_ASSET_TAG"
         return(assetTag)
 
-    # *****  read non-volatile data  *****
-    # normally, the backend will push this if changes due to non-Redfish interface
-    # but implementing a get for debug and case where backend can push
-    def getNonVolatileChassisInfo(self,rdr,chassisid):
-        resp=dict()
-        #get assetTag()
-        assetTag="EXAMPLE_ASSET_TAG"
-        resp["AssetTag"]=assetTag
-        rc=0 #     0=ok
-        return(rc,resp)
 
     # these not implemented in front-end yet
 

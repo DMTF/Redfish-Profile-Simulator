@@ -43,6 +43,7 @@ def redDrumMain(*args, **kwargs):
     if kwargs["isLocal"]:
         rdSvcPath=os.getcwd() # where we are executing from
         rdr.RedDrumConfPath = os.path.join(rdSvcPath, "RedDrum","RedDrum.conf" ) # use the LOCAL RedDrum.conf
+        # xg99 move varDataPath to a writable spot in OpenBMC
         rdr.varDataPath=os.path.join(rdSvcPath, "RedDrum", "RedfishService", rdService,  "Data", "var", "www", "rf")
         rdr.baseDataPath=os.path.join(rdSvcPath, "RedDrum","RedfishService", rdService,  "Data")
         print("   Local Execution")

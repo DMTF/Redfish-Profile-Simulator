@@ -39,6 +39,13 @@ class RdBackendRoot():
         rdr.resourceDiscovery="Static"
         rdr.staticChassisConfig="OBmcMonolythicPower8"
         self.backendStatus="OK"
+
+        # to move the data caches somewhere safe, edit these path and dont run with isLocal flat in RedDrumMain
+        #rdSvcPath="/opt/dell/rm-tools/RMRedfishService"   # this is a read path  
+        #rdr.RedDrumConfPath = "/etc/opt/dell/rm-tools/RedDrum.conf"  # read path 
+        #rdr.varDataPath="/var/www/rf/"
+        #rdr.baseDataPath=os.path.join(rdSvcPath, "RedDrum","RedfishService", "FlaskApp", "Data")
+
         print("****Initialized Backend using: {}".format(rdr.staticChassisConfig))
 
     def doPhase1Discovery(self,rdr):

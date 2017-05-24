@@ -330,7 +330,7 @@ class RfChassisResource():
             return(404, "Not Found","","")
 
         #define the patchable properties in Chassis Resource
-        patchableInRedfish=["AssetTag","IndicatorLed"]
+        patchableInRedfish=["AssetTag","IndicatorLED"]
 
         #first verify client didn't send us a property we cant patch based on Redfish Schemas
         for prop in patchData:
@@ -351,19 +351,20 @@ class RfChassisResource():
         for prop in patchData:
             if prop in self.chassisVolatileDict[chassisid]:
                 self.chassisVolatileDict[chassisid][prop]=patchData[prop]
-                if "PendingUpdate" not in self.chassisVolatileDict[chassisid]:
-                    self.chassisVolatileDict[chassisid]["PendingUpdate"]=[]
-                if prop not in self.chassisVolatileDict[chassisid]["PendingUpdate"]:
-                    self.chassisVolatileDict[chassisid]["PendingUpdate"].append(prop)
                 #xg JOB  setChassisProperty(chassisid, prop, "Volatile", patchData[prop])
+                print("OBMC: hook backend to patch volatile data in volDict-1")
+
+            elif( ("Volatile" in self.chassisDb[chassisid]) and (prop in self.chassisDb[chassisid]["Volatile"])):
+                # this means it is a volatile property not yet written to the volatileDict. so do it here
+                self.chassisVolatileDict[chassisid][prop]=patchData[prop]
+                #xg JOB  setChassisProperty(chassisid, prop, "Volatile", patchData[prop])
+                print("OBMC: hook backend to patch volatile data in volDict-2")
 
             elif prop in self.chassisDb[chassisid]:
+                # its a nonVolatile property.    Update it in chassisDb and update HDD cache
                 self.chassisDb[chassisid][prop]=patchData[prop]
-                if "PendingUpdate" not in self.chassisDb[chassisid]:
-                    self.chassisDb[chassisid]["PendingUpdate"]=[]
-                if prop not in self.chassisDb[chassisid]["PendingUpdate"]:
-                    self.chassisDb[chassisid]["PendingUpdate"].append(prop)
                 #xg JOB  setChassisProperty(chassisid, prop, "NonVolatile", patchData[prop])
+                print("OBMC: hook backend to patch non-volatile data ")
 
                 self.updateStaticChassisDbFile( )
 
