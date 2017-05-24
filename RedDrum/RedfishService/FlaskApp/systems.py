@@ -346,6 +346,7 @@ class RfSystemsResource():
 
 
 
+    #xg99
     def patchSystemEntry(self,systemid, patchData):
         # verify that the systemid is valid
         if systemid not in self.systemsDb:
@@ -571,4 +572,43 @@ class RfSystemsResource():
         return(0, 200, "SUCCESS", respData2, None)
     '''
 
+
+    #xg99
+    def resetSystem(self,rfr, systemid, resetData):
+        # verify that the systemid is valid
+        if systemid not in self.systemsDb:
+            return(404, "Not Found","","")
+
+        #  if there is no ResetAllowable value property in systemsDb, then the system doesn't support reset
+        if "ActionsResetAllowableValues" not in self.systemsDb[systemid]:
+            return(404, "Not Found","","")
+
+        # verify all the required properties were sent in the request
+        if "ResetType" not in resetData: 
+            return(4,400,"Required  request property not included in request","")
+        else:
+            # get the resetValue
+            resetValue=resetData["ResetType"]
+
+        # check if this is a valid resetTYpe for Redfish xgTODO-need to fix
+        redfishValidResetValues=["On","ForceOff","GracefulShutdown","GracefulRestart","ForceRestart","Nmi"]
+        if resetValue not in redfishValidResetValues:
+            return(4,400,"invalid resetType","")
+
+        # check if this is a resetTYpe that this system supports
+        if resetValue not in self.systemsDb[systemid]["ActionsResetAllowableValues"]:
+            return(4,400,"invalid resetType","")
+
+        # if here we have a valid request and valid resetValue 
+        # XGxg JOB send reset to backend
+        # send request to reset system to backend
+        print("*****FrontEnd: Send Reset signal to Backent:  ResetType: {}".format(resetValue))
+        rc=rfr.backend.systems.doSystemReset(rfr,systemid,resetValue)
+
+        if( rc==0):
+            return(0, 204, "SUCCESS", None)
+        else:
+            return(rc,500, "ERROR",None)
+
+        # DONE
 

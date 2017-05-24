@@ -8,22 +8,25 @@ class  RdChassisBackend():
     # class for backend chassis resource APIs
     def __init__(self,rdr):
         self.version=1
+        self.testLedState="Blinking"
 
     # **** Backend PULL APIs   from Frontend RedfishService ****
     #
     # GET volatile chassis info for this chassis
     def getVolatileChassisInfo(self,rdr,chassisid):
         #for this chasssis:
+        # hook DBUS xgOBMC
         resp=dict()
-        resp["IndicatorLED"]="Blinking"                 # ledstate
-        resp["PowerState"]="Off"                        # powerstate
+        resp["IndicatorLED"]=self.testLedState          # change to get from DBUS
+        resp["PowerState"]="Off"                        # change to get from DBUS
         resp["Status"]={"State": "Enabled", "Health": "OK"} #status
-        nonVolatileDataChanged=False
+        nonVolatileDataChanged=True
         rc=0     # 0=ok
         return(rc,resp,nonVolatileDataChanged)
 
     def getStaticDiscoveryChassisInfo(self,rdr,chassisid):
         # for this chassis,
+        # hook DBUS xgOBMC
         resp=dict()
         resp["Manufacturer"]="IBM9"
         resp["Model"]="Power9MB"
@@ -31,14 +34,15 @@ class  RdChassisBackend():
         resp["SerialNumber"]="999999"
         resp["PartNumber"]="Power999"
         rc=0     # 0=ok
-        return(rc,resp,nonVolatileDataChanged)
+        return(rc,resp)
 
     # *****  read non-volatile data  *****
     # normally, the backend will push this if changes due to non-Redfish interface
     # but implementing a get for debug and case where backend can push
     def getNonVolatileChassisInfo(self,rdr,chassisid):
-        resp=dict()
         #get assetTag()
+        # hook DBUS xgOBMC
+        resp=dict()
         resp["AssetTag"]="ASSET9"
         rc=0 #     0=ok
         return(rc,resp)
@@ -153,8 +157,16 @@ class  RdChassisBackend():
 
     # SET LED state
     def doSetLed(self,rdr,chassisid,ledState):
-        # set indicator LED  Lit, Blinking, or Off
-        storedaVal=ledState
+        # set indicator LED to oneOf:  "Lit", "Blinking", or "Off"
+        # hook DBUS xgOBMC
+        print("BACKEND: setting LED to state: {}".format(ledState))
+        # for for testing, we are setting in internal var for get response
+        self.testLedState=ledState
+
+        # return the actual value stored 
+        # if backend maps On to Blinking, or Blinking to On, return actual value
+        storedVal=ledState
+        # rc=0 if ok, rc>0 if error
         rc=0  #0=ok
         return(rc, storedVal)
 

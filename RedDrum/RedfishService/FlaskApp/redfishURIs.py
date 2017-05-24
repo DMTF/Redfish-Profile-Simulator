@@ -757,8 +757,26 @@ def rfApi_RedDrum(rfr, rdm, host="127.0.0.1", port=5001):
             return("",statusCode)
 
     # -----------------------------------------------------------------------
+    # System Reset xg99
+    # POST /redfish/v1/Systems/<sysid> -- reset system
+    #    -auth,  post to system at reset target URI
+    #rest/v1/systems/1    
+    @app.route("/redfish/v1/Systems/<sysid>/Actions/ComputerSystem.Reset", methods=['POST'])
+    @rfcheckHeaders(rfr)
+    #@rfaddHeaders(rfr)
+    @auth.rfAuthRequired(privilege=[["Login"]],rdata=rfr)  # xg TODO fix privilege
+    def rfComputerSystemreset(sysid):
+            rdata=request.get_json(cache=True)
+            #print("rdata:{}".format(rdata))
+            rc,statusCode,errString,resp=rfr.root.systems.resetSystem(rfr, sysid, rdata)
+            if(rc==0):
+                return("",statusCode)
+            else: # error
+                return("",statusCode)
+
+
     '''
-    
+    # -----------------------------------------------------------------------
     #rest/v1/systems/1    
     @app.route("/redfish/v1/Systems/1", methods=['PATCH'])
     @auth.rfAuthRequired

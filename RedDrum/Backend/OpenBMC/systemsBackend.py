@@ -16,8 +16,15 @@ class  RdSystemsBackend():
     # GET volatile system info 
     def getVolatileSystemInfo(self,rdr,systemid):
         resp=dict()
-        resp["IndicatorLED"]="Lit"                     # ledstate: Lit, Blinking, Off
-        resp["PowerState"]="On"                        # powerstate: On, Off
+        # get some of the data from the ChassisBackend
+        rc,respChas,nonVolChanged=rdr.backend.chassis.getVolatileChassisInfo(rdr,"Opc1")
+        if( (rc==0) and ("IndicatorLED" in respChas) and ("PowerState" in respChas)):
+            resp["IndicatorLED"]=respChas["IndicatorLED"]
+            resp["PowerState"]=respChas["PowerState"]
+        else:
+            print("*****BACKEND-Systems: error getting chassis info from Chassis Backend")
+            resp["IndicatorLED"]=null
+            resp["PowerState"]=null
         resp["Status"]={"State": "Enabled", "Health": "OK"} #status: Enable|Disabled|Absent
         resp["BootSourceOverrideEnabled"]=True         # True/False
         resp["BootSourceOverrideTarget"]="Pxe"         # None,Pxe,Floppy, Cd, Usb, Hdd, BiosSetup, UefiTarget...
@@ -27,24 +34,34 @@ class  RdSystemsBackend():
         return(rc,resp,self.nonVolatileDataChanged)
 
 
-    # DO action:  "Reset", "Hard,
+    # DO action:  "Reset", "Hard,  ***this is being called by frontend xgOBMC
     def doSystemReset(self,rdr,systemid,resetType):
         if( resetType == "On"):
             # do powerOn - if powerstate is off, push power button
             # the service should have already verified power is off to get here
+            print("BACKEND: got reset type: On")
+            # hoot DBUS xgOBMC
             pass
         elif( resetType == "ForceOff"):
             # do Hard Poweroff - eg hold power button down for 6 sec in a thread
+            print("BACKEND: got reset type: Force Off")
+            # hoot DBUS xgOBMC
             pass
         elif( resetType == "ForceRestart"):
             # do Hard powerOff, then powerOn - 
             #    - hold power button down 6 sec, then after powerOff, push button for .5 sec to turn-on
+            print("BACKEND: got reset type: FOrce Restart")
+            # hoot DBUS xgOBMC
             pass
         elif( resetType == "GracefulShutdown"):
             # do ACPI shutdown - if system is now on, press power button for .5 sec
+            print("BACKEND: got reset type: Graceful Shutdown")
+            # hoot DBUS xgOBMC
             pass
         elif( resetType == "GracefulRestart"):
             # do gracefulShutdown, then press power button to turn back on
+            print("BACKEND: got reset type: Graceful Restart")
+            # hoot DBUS xgOBMC
             pass
         else:
             return(9)    # invalid request
@@ -52,14 +69,14 @@ class  RdSystemsBackend():
         return(rc)
 
 
-    # SET LED state
+    # SET LED state   * see chassis.py
     def doSetLed(self,rdr,systemid,ledState):
         storedaVal=ledState
         rc=0  #0=ok
         return(rc, storedVal)
 
 
-    # SET asset Tag
+    # SET asset Tag   * see chassis.py
     def doSetAssetTag(self,rdr,systemid,assetTagVal):
         # This is non-volatile data so generally the backend will push any changes
         storedaVal=assetTagVal
@@ -72,7 +89,7 @@ class  RdSystemsBackend():
         rc=0  #0=ok
         return(rc, storedVal)
 
-    # *****  read non-volatile data  *****
+    # *****  read non-volatile data  *****   * see chassis.py
     # normally, the backend will push this if changes due to non-Redfish interface
     # but implementing a get for debug and case where backend can push
     def getNonVolatileSystemInfo(self,rdr,systemid):

@@ -213,6 +213,45 @@ class RfChassisResource():
         responseData2["@odata.id"] = basePath + chassisid
         responseData2["Id"] = chassisid
 
+        #xg99
+        # **make calls to Backend to get volatile info
+        # first if we havent already, get staticDiscoveryChassisInfo
+        if not "GotStaticDiscoveryInfo" in self.chassisVolatileDict[chassisid]:
+            print("*****FrontEnd: Send getStaticDiscoveryChassisInfo request to Backend ")
+            rc,resp=self.rfr.backend.chassis.getStaticDiscoveryChassisInfo(self.rfr,chassisid)
+            if( rc==0):
+                # set flag we have discovered staticDiscovery data
+                self.chassisVolatileDict[chassisid]["GotStaticDiscoveryInfo"]=True
+                for prop in staticProperties:
+                    if prop in resp:
+                        self.chassisDb[chassisid][prop]=resp[prop]
+            else:
+                print("=================Error from Backend getting StaticDiscovery Data")
+
+        # next, get volatileChassisInfo data
+        print("*****FrontEnd: Send getVolatileChassisInfo request to Backend ")
+        rc,resp,getNvData=self.rfr.backend.chassis.getVolatileChassisInfo(self.rfr,chassisid)
+        if( rc==0):
+            for prop in volatileProperties:
+                if prop in resp:
+                    self.chassisVolatileDict[chassisid][prop]=resp[prop]
+            if "Status" in resp:
+                self.chassisVolatileDict[chassisid]["Status"]=resp["Status"]
+        else:
+            getNvData=False
+            print("=================Error from Backend getting Volatile Data")
+
+        # next, get nonVolatileChassisInfo data if the response above flags and update
+        if getNvData is True:   # getNvData is flag sent back that NonVolatile data changed
+            print("*****FrontEnd: Send getNonVolatileChassisInfo request to Backend ")
+            rc,resp=self.rfr.backend.chassis.getNonVolatileChassisInfo(self.rfr,chassisid)
+            if( rc==0):
+                for prop in nonVolatileProperties:
+                    if prop in resp:
+                        self.chassisDb[chassisid][prop]=resp[prop]
+        else:
+            print("=================Error from Backend getting NonVolatile Data")
+
         # set the base static properties that were assigned when the resource was created
         for prop in staticProperties:
             if prop in self.chassisDb[chassisid]:
@@ -347,24 +386,42 @@ class RfChassisResource():
             if prop not in self.chassisDb[chassisid]["Patchable"]:
                 return(500, "Bad Request","Property: {} not patachable for this resource".format(prop),"")
 
+        # defensive chech for the setting data
+        ledValidValues=["Lit", "Blinking", "Off"]
+        if( prop=="IndicatorLED"):
+            if patchData[prop] not in ledValidValues:
+                return(500, "Bad Request","value: {} not valid for LED ".format(patchData[prop]),"")
+
+        #xg99
         # now patch the valid properties sent
         for prop in patchData:
             if prop in self.chassisVolatileDict[chassisid]:
-                self.chassisVolatileDict[chassisid][prop]=patchData[prop]
                 #xg JOB  setChassisProperty(chassisid, prop, "Volatile", patchData[prop])
-                print("OBMC: hook backend to patch volatile data in volDict-1")
+                print("FRONTEND: hook backend to patch volatile data in volDict-1")
+                if prop=="IndicatorLED":
+                    print("FRONTEND: hooking backend to set led to state: {}".format(patchData[prop]))
+                    rc,storedVal=self.rfr.backend.chassis.doSetLed(self.rfr,chassisid,patchData[prop])
+                    if( rc==0):
+                        print("FRONT: got back: {}".format(storedVal))
+                        self.chassisVolatileDict[chassisid][prop]=storedVal
+                        print("FRONT: in dict: prop:{}, val: {}".format(prop,self.chassisVolatileDict[chassisid][prop]))
 
             elif( ("Volatile" in self.chassisDb[chassisid]) and (prop in self.chassisDb[chassisid]["Volatile"])):
                 # this means it is a volatile property not yet written to the volatileDict. so do it here
-                self.chassisVolatileDict[chassisid][prop]=patchData[prop]
+                #self.chassisVolatileDict[chassisid][prop]=patchData[prop]
                 #xg JOB  setChassisProperty(chassisid, prop, "Volatile", patchData[prop])
-                print("OBMC: hook backend to patch volatile data in volDict-2")
+                print("FRONTEND: hook backend to patch volatile data in volDict-2")
+                if prop=="IndicatorLED":
+                    print("FRONTEND: hooking backend to set led to state: {}".format(patchData[prop]))
+                    rc,storedVal=self.rfr.backend.chassis.doSetLed(self.rfr,chassisid,patchData[prop])
+                    if( rc==0):
+                        print("FRONT: got back: {}".format(storedVal))
+                        self.chassisVolatileDict[chassisid][prop]=storedVal
 
             elif prop in self.chassisDb[chassisid]:
                 # its a nonVolatile property.    Update it in chassisDb and update HDD cache
                 self.chassisDb[chassisid][prop]=patchData[prop]
                 #xg JOB  setChassisProperty(chassisid, prop, "NonVolatile", patchData[prop])
-                print("OBMC: hook backend to patch non-volatile data ")
 
                 self.updateStaticChassisDbFile( )
 
