@@ -10,9 +10,11 @@
 #    pip install Flask
 #
 # standard python packages
+
 import sys
 import os
 import configparser
+from pkg_resources import resource_string, resource_filename
 
 from .RedfishService import getServiceName
 from .RedfishService import RdRoot
@@ -36,36 +38,45 @@ def redDrumMain(*args, **kwargs):
     rdbe = RedDrumBackend(rdr)
     rdr.backend=rdbe
 
-
-    # if executing locally (keeping all data inside the installed directory), update paths to override backend
-    #   this is over-riding whatever paths the Backend put in
-    #   this is used when developer testing or if running simulator
-    if kwargs["isLocal"]:
-        rdSvcPath=os.getcwd() # where we are executing from
-        rdr.RedDrumConfPath = os.path.join(rdSvcPath, "RedDrum","RedDrum.conf" ) # use the LOCAL RedDrum.conf
-        # xg99 move varDataPath to a writable spot in OpenBMC
-        rdr.varDataPath=os.path.join(rdSvcPath, "RedDrum", "RedfishService", rdService,  "Data", "var", "www", "rf")
-        rdr.baseDataPath=os.path.join(rdSvcPath, "RedDrum","RedfishService", rdService,  "Data")
-        print("   Local Execution")
-        sys.stdout.flush()
-
-
+    rdr.RedDrumConf = resource_filename(__name__, 'RedDrum.conf')
+    rdr.templatesBase = resource_filename(__name__, "/" )
+    rdr.baseDataPath=os.path.join(rdr.templatesBase, "RedfishService", rdService,  "Data")
+    print ("HI THERE: %s" % rdr.RedDrumConf )
+    print ("HI THERE: %s" % rdr.templatesBase )
+    print ("HI THERE: %s" % rdr.baseDataPath )
+    sys.stdout.flush()
+    
     # Now update the default root data with any data stored in RedDrum.conf config file
     #    This includes the config parameteers for Authentication and header processing
     #    Anything from RedDrum.conf can be OVER_WRITTEN by Backend start code!
     try:
         config = configparser.ConfigParser(inline_comment_prefixes='#')
-        config.read(rdr.RedDrumConfPath)
-        rdr.HttpHeaderCacheControl = config['Server Section']['HttpHeaderCacheControl'][1:-1]
-        rdr.HttpHeaderServer = config['Server Section']['HttpHeaderServer'][1:-1]
-        rdr.JsonSchemasBasePath = config['Server Section']['JsonSchemasBasePath'][1:-1]
-        rdr.RedfishAllowAuthNone = config['Auth Section']['RedfishAllowAuthNone']
-        rdr.RedfishAllowAuthenticatedAPIsOverHttp = config['Auth Section']['RedfishAllowAuthenticatedAPIsOverHttp']
-        rdr.RedfishAllowBasicAuthOverHttp = config['Auth Section']['RedfishAllowBasicAuthOverHttp']
-        rdr.RedfishAllowSessionLoginOverHttp = config['Auth Section']['RedfishAllowSessionLoginOverHttp']
-        rdr.RedfishAllowUserCredUpdateOverHttp = config['Auth Section']['RedfishAllowUserCredUpdateOverHttp']
+        config.read(rdr.RedDrumConf)
     except IOError:
         print ("Error: RM Config File does not appear to exist.")
+
+    rdr.HttpHeaderCacheControl = config['Server Section']['HttpHeaderCacheControl'][1:-1]
+
+    rdr.varDataPath = config['Server Section']['ServerCachePath']
+    try:
+        print ("Make dir: %s" % rdr.varDataPath)
+        os.mkdir(rdr.varDataPath)
+    except FileExistsError:
+        pass
+    for subdir in ["chassisdb", "db", "managersDb", "systemsDb", "static"]:
+        try:
+            print ("Make dir: %s" % os.path.join(rdr.varDataPath, subdir))
+            os.mkdir(os.path.join(rdr.varDataPath, subdir))
+        except FileExistsError:
+            pass
+
+    rdr.HttpHeaderServer = config['Server Section']['HttpHeaderServer'][1:-1]
+    rdr.JsonSchemasBasePath = config['Server Section']['JsonSchemasBasePath'][1:-1]
+    rdr.RedfishAllowAuthNone = config['Auth Section']['RedfishAllowAuthNone']
+    rdr.RedfishAllowAuthenticatedAPIsOverHttp = config['Auth Section']['RedfishAllowAuthenticatedAPIsOverHttp']
+    rdr.RedfishAllowBasicAuthOverHttp = config['Auth Section']['RedfishAllowBasicAuthOverHttp']
+    rdr.RedfishAllowSessionLoginOverHttp = config['Auth Section']['RedfishAllowSessionLoginOverHttp']
+    rdr.RedfishAllowUserCredUpdateOverHttp = config['Auth Section']['RedfishAllowUserCredUpdateOverHttp']
 
 
     # import the RedfishService classes and code we run from main.
