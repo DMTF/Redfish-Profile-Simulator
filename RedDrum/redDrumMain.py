@@ -41,19 +41,25 @@ def redDrumMain(*args, **kwargs):
     rdr.RedDrumConf = resource_filename(__name__, 'RedDrum.conf')
     rdr.templatesBase = resource_filename(__name__, "/" )
     rdr.baseDataPath=os.path.join(rdr.templatesBase, "RedfishService", rdService,  "Data")
-    print ("HI THERE: %s" % rdr.RedDrumConf )
-    print ("HI THERE: %s" % rdr.templatesBase )
-    print ("HI THERE: %s" % rdr.baseDataPath )
+    print ("Startup CONF FILE: %s" % rdr.RedDrumConf )
+    print ("Startup templatesBase: %s" % rdr.templatesBase )
+    print ("Startup baseDataPath: %s" % rdr.baseDataPath )
     sys.stdout.flush()
-    
+
     # Now update the default root data with any data stored in RedDrum.conf config file
     #    This includes the config parameteers for Authentication and header processing
     #    Anything from RedDrum.conf can be OVER_WRITTEN by Backend start code!
-    try:
-        config = configparser.ConfigParser(inline_comment_prefixes='#')
-        config.read(rdr.RedDrumConf)
-    except IOError:
-        print ("Error: RM Config File does not appear to exist.")
+    config = configparser.ConfigParser(inline_comment_prefixes='#')
+    # read multiple paths
+
+    # system global read config
+    config.read("/usr/share/RedDrum/RedDrum.conf")
+
+    # system global writable config
+    config.read("/etc/RedDrum/RedDrum.conf")
+
+    # start with path inside tree (development or other)
+    config.read(rdr.RedDrumConf)
 
     rdr.HttpHeaderCacheControl = config['Server Section']['HttpHeaderCacheControl'][1:-1]
 
@@ -63,7 +69,7 @@ def redDrumMain(*args, **kwargs):
         os.mkdir(rdr.varDataPath)
     except FileExistsError:
         pass
-    for subdir in ["chassisdb", "db", "managersDb", "systemsDb", "static"]:
+    for subdir in ["chassisDb", "db", "managersDb", "systemsDb", "static"]:
         try:
             print ("Make dir: %s" % os.path.join(rdr.varDataPath, subdir))
             os.mkdir(os.path.join(rdr.varDataPath, subdir))
@@ -83,15 +89,15 @@ def redDrumMain(*args, **kwargs):
     #     this instantiates all of the RedfishService resource--they all live "under" the ServiceRoot
     from .RedfishService import RfServiceRoot
 
-    
+
     # import the API to the Main RedfishService function
     #     rfApi_RackManager  is a function in ./RedfishService/FlaskApp/redfishURIs.py.
     #     It loads the flask APIs (URIs), and starts the flask service
     from .RedfishService  import rfApi_RedDrum
 
     # Now create the root service resource object
-    #     This will create Python dictionary for all resources under the root service 
-    #     It also runs phase-1 discovery 
+    #     This will create Python dictionary for all resources under the root service
+    #     It also runs phase-1 discovery
     rdr.root=RfServiceRoot(rdr )
 
     # start the flask REST API service for RackManager
