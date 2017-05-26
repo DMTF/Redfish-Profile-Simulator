@@ -69,7 +69,7 @@ def redDrumMain(*args, **kwargs):
         os.mkdir(rdr.varDataPath)
     except FileExistsError:
         pass
-    for subdir in ["chassisdb", "db", "managersDb", "systemsDb", "static"]:
+    for subdir in ["chassisDb", "db", "managersDb", "systemsDb", "static"]:
         try:
             print ("Make dir: %s" % os.path.join(rdr.varDataPath, subdir))
             os.mkdir(os.path.join(rdr.varDataPath, subdir))
