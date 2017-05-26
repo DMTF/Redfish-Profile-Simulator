@@ -49,11 +49,17 @@ def redDrumMain(*args, **kwargs):
     # Now update the default root data with any data stored in RedDrum.conf config file
     #    This includes the config parameteers for Authentication and header processing
     #    Anything from RedDrum.conf can be OVER_WRITTEN by Backend start code!
-    try:
-        config = configparser.ConfigParser(inline_comment_prefixes='#')
-        config.read(rdr.RedDrumConf)
-    except IOError:
-        print ("Error: RM Config File does not appear to exist.")
+    config = configparser.ConfigParser(inline_comment_prefixes='#')
+    # read multiple paths
+
+    # system global read config
+    config.read("/usr/share/RedDrum/RedDrum.conf")
+
+    # system global writable config
+    config.read("/etc/RedDrum/RedDrum.conf")
+
+    # start with path inside tree (development or other)
+    config.read(rdr.RedDrumConf)
 
     rdr.HttpHeaderCacheControl = config['Server Section']['HttpHeaderCacheControl'][1:-1]
 
