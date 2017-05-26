@@ -45,7 +45,7 @@ def redDrumMain(*args, **kwargs):
     print ("HI THERE: %s" % rdr.templatesBase )
     print ("HI THERE: %s" % rdr.baseDataPath )
     sys.stdout.flush()
-    
+
     # Now update the default root data with any data stored in RedDrum.conf config file
     #    This includes the config parameteers for Authentication and header processing
     #    Anything from RedDrum.conf can be OVER_WRITTEN by Backend start code!
@@ -89,15 +89,15 @@ def redDrumMain(*args, **kwargs):
     #     this instantiates all of the RedfishService resource--they all live "under" the ServiceRoot
     from .RedfishService import RfServiceRoot
 
-    
+
     # import the API to the Main RedfishService function
     #     rfApi_RackManager  is a function in ./RedfishService/FlaskApp/redfishURIs.py.
     #     It loads the flask APIs (URIs), and starts the flask service
     from .RedfishService  import rfApi_RedDrum
 
     # Now create the root service resource object
-    #     This will create Python dictionary for all resources under the root service 
-    #     It also runs phase-1 discovery 
+    #     This will create Python dictionary for all resources under the root service
+    #     It also runs phase-1 discovery
     rdr.root=RfServiceRoot(rdr )
 
     # start the flask REST API service for RackManager
