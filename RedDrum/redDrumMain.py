@@ -41,9 +41,9 @@ def redDrumMain(*args, **kwargs):
     rdr.RedDrumConf = resource_filename(__name__, 'RedDrum.conf')
     rdr.templatesBase = resource_filename(__name__, "/" )
     rdr.baseDataPath=os.path.join(rdr.templatesBase, "RedfishService", rdService,  "Data")
-    print ("HI THERE: %s" % rdr.RedDrumConf )
-    print ("HI THERE: %s" % rdr.templatesBase )
-    print ("HI THERE: %s" % rdr.baseDataPath )
+    print ("Startup CONF FILE: %s" % rdr.RedDrumConf )
+    print ("Startup templatesBase: %s" % rdr.templatesBase )
+    print ("Startup baseDataPath: %s" % rdr.baseDataPath )
     sys.stdout.flush()
 
     # Now update the default root data with any data stored in RedDrum.conf config file
