@@ -42,7 +42,7 @@ class RdBackendRoot():
 
         # to move the data caches somewhere safe, edit these path and dont run with isLocal flat in RedDrumMain
         #rdSvcPath="/opt/dell/rm-tools/RMRedfishService"   # this is a read path  
-        #rdr.RedDrumConfPath = "/etc/opt/dell/rm-tools/RedDrum.conf"  # read path 
+        rdr.RedDrumConfPath = "/usr/share/RedDrum/RedDrum.conf"  # read path
         #rdr.varDataPath="/var/www/rf/"
         #rdr.baseDataPath=os.path.join(rdSvcPath, "RedDrum","RedfishService", "FlaskApp", "Data")
 
