@@ -32,26 +32,27 @@ def redDrumMain(*args, **kwargs):
     rdr.program="redDrumMain"
     rdr.version="0.9.5"
 
+    rdr.RedDrumConfPath = resource_filename(__name__, 'RedDrum.conf')
+    rdr.templatesBase = resource_filename(__name__, "/" )
+    rdr.baseDataPath=os.path.join(rdr.templatesBase, "RedfishService", rdService,  "Data")
+
     # startup the Backend
     #   Note that the Backend start code may change the root data in rdr to specify paths, etc
     #   cd the RedDrum/Backend and edit __init__.py to select a specific Backend
     rdbe = RedDrumBackend(rdr)
     rdr.backend=rdbe
 
-    rdr.RedDrumConf = resource_filename(__name__, 'RedDrum.conf')
-    rdr.templatesBase = resource_filename(__name__, "/" )
-    rdr.baseDataPath=os.path.join(rdr.templatesBase, "RedfishService", rdService,  "Data")
-    print ("HI THERE: %s" % rdr.RedDrumConf )
+    print ("HI THERE: %s" % rdr.RedDrumConfPath )
     print ("HI THERE: %s" % rdr.templatesBase )
     print ("HI THERE: %s" % rdr.baseDataPath )
     sys.stdout.flush()
-    
+
     # Now update the default root data with any data stored in RedDrum.conf config file
     #    This includes the config parameteers for Authentication and header processing
     #    Anything from RedDrum.conf can be OVER_WRITTEN by Backend start code!
     try:
         config = configparser.ConfigParser(inline_comment_prefixes='#')
-        config.read(rdr.RedDrumConf)
+        config.read(rdr.RedDrumConfPath)
     except IOError:
         print ("Error: RM Config File does not appear to exist.")
 
@@ -63,7 +64,7 @@ def redDrumMain(*args, **kwargs):
         os.mkdir(rdr.varDataPath)
     except FileExistsError:
         pass
-    for subdir in ["chassisdb", "db", "managersDb", "systemsDb", "static"]:
+    for subdir in ["chassisDb", "db", "managersDb", "systemsDb", "static"]:
         try:
             print ("Make dir: %s" % os.path.join(rdr.varDataPath, subdir))
             os.mkdir(os.path.join(rdr.varDataPath, subdir))
