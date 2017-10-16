@@ -42,7 +42,7 @@ is a Python34 real simulator of the "simple monolithic server" feature profile.
     
 ## Implementation
 * The simulation includes an http server, RestEngine, and dynamic Redfish datamodel.
-* You can GET, PATHCH,... to the service just like a real Redfish service.
+* You can GET, PATCH,... to the service just like a real Redfish service.
 * Both Basic and Redfish Session/Token authentication are supported 
   * for a single user/passwd and token
   * the user/passwd is:   root/password123456    
