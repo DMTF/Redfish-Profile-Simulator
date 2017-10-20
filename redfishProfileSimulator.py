@@ -14,7 +14,7 @@ rfVersion = "0.9.49"
 rfProgram1 = "redfishProfileSimulator"
 rfProgram2 = "                "
 rfUsage1 = "[-Vh]  [--Version][--help]"
-rfUsage2 = "[-H<hostIP>] [-P<port>] [-p<profile>]"
+rfUsage2 = "[-H<hostIP>] [-P<port>] [-p<profile_path>]"
 rfUsage3 = "[--Host=<hostIP>] [--Port=<port>] [--profile_path=<profile_path>]"
 
 
@@ -43,11 +43,11 @@ def rf_help():
         print("Version: ", rfVersion)
         rf_usage()
         print("")
-        print("       -V,          --Version,            --- the program version")
-        print("       -h,          --help,               --- help")
-        print("       -H<hostIP>,  --Host=<hostIp>       --- host IP address. dflt=127.0.0.1")
-        print("       -P<port>,    --Port=<port>         --- the port to use. dflt=5000")
-        print("       -p<profile>, --profile=<profile_path>   --- the Redfish profile to use. "
+        print("       -V,          --Version,                       --- the program version")
+        print("       -h,          --help,                          --- help")
+        print("       -H<hostIP>,  --Host=<hostIp>                  --- host IP address. dflt=127.0.0.1")
+        print("       -P<port>,    --Port=<port>                    --- the port to use. dflt=5000")
+        print("       -p<profile_path>, --profile=<profile_path>    --- the path to the Redfish profile to use. "
               "dflt=\"./MockupData/SimpleOcpServerV1\" ")
 
 

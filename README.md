@@ -37,7 +37,7 @@ is a Python34 real simulator of the "simple monolithic server" feature profile.
 		-h,  --help,   --- help
 		-H<hostIP>,  --Host=<hostIp>   --- host IP address. dflt=127.0.0.1
 		-P<port>,--Port=<port> --- the port to use. dflt=5000
-		-p<provile>, --profile=<profile>   --- the Redfish profile to use. dflt="SimpleOcpServerV1"
+		-p<profile_path>, --profile=<profile_path>   --- the path to the Redfish profile to use. dflt="SimpleOcpServerV1"
     
     
 ## Implementation

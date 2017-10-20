@@ -57,50 +57,50 @@ class RfManagerObj(RfResource):
             elif item == "NetworkService":
                 self.components[item] = RfNetworkService(base_path, os.path.join(rel_path, item), parent=self)
 
-    def patch_resource(self, patchData):
+    def patch_resource(self, patch_data):
         # first verify client didn't send us a property we cant patch
-        for key in patchData.keys():
+        for key in patch_data.keys():
             if key != "DateTime" and key != "DateTimeLocalOffset":
                 return 4, 400, "Invalid Patch Property Sent", ""
 
-        dateTime = None
-        dateTimeOffset = None
-        localOffset = None
+        date_time = None
+        date_time_offset = None
+        local_offset = None
 
         # now patch the valid properties sent
-        if "DateTime" in patchData:
-            dateTime = patchData['DateTime']
-            dateTimeOffset = dateTime[-6:]  # get last 6 chars ....+00:00 or -00:00
-        if "DateTimeLocalOffset" in patchData:
-            localOffset = patchData['DateTimeLocalOffset']
+        if "DateTime" in patch_data:
+            date_time = patch_data['DateTime']
+            date_time_offset = date_time[-6:]  # get last 6 chars ....+00:00 or -00:00
+        if "DateTimeLocalOffset" in patch_data:
+            local_offset = patch_data['DateTimeLocalOffset']
 
         # verify that if both DateTime and DateTimeLocalOffset were sent, thant
         #  the offsets are the same.  (no reason to send both though)
-        if ((dateTimeOffset is not None) and (localOffset is not None)):
-            if (dateTimeOffset != localOffset):
-                return (4, 409, "Offsets in DateTime and DateTimeLocalOffset conflict", None)  # 409 Conflict
+        if date_time_offset is not None and local_offset is not None:
+            if date_time_offset != local_offset:
+                return 4, 409, "Offsets in DateTime and DateTimeLocalOffset conflict", None  # 409 Conflict
 
         # reconcile localOffset and the offset in DateTime to write back
         # if only DateTime was updated, also update dateTimeLocalOffset
-        if (localOffset is None):
-            localOffset = dateTimeOffset
+        if local_offset is None:
+            local_offset = date_time_offset
         # if only DateTimeLocalOffset was updated (timezone change), also update DateTime
-        if (dateTime is None):
-            dateTime = self.res_data['DateTime']  # read current value to get time
-            dateTime = dateTime[:-6]  # strip the offset
-            dateTime = dateTime + localOffset  # add back the offset sent in in DateTimeLocalOFfset
+        if date_time is None:
+            date_time = self.res_data['DateTime']  # read current value to get time
+            date_time = date_time[:-6]  # strip the offset
+            date_time = date_time + local_offset  # add back the offset sent in in DateTimeLocalOFfset
 
-        # TODO:  issue 1545 in SPMF is ambiguity of what patching DateTimeLocalOFfset should actually do.
+        # TODO:  issue 1545 in SPMF is ambiguity of what patching DateTimeLocalOffset should actually do.
         # this may need to be updated once issue is resolved
 
         # now write the valid properties with updated values
-        self.res_data['DateTime'] = dateTime
-        self.res_data['DateTimeLocalOffset'] = localOffset
-        return (0, 204, None, None)
+        self.res_data['DateTime'] = date_time
+        self.res_data['DateTimeLocalOffset'] = local_offset
+        return 0, 204, None, None
 
-    def reset_resource(self, resetData):
-        if "ResetType" in resetData:
-            value = resetData['ResetType']
+    def reset_resource(self, reset_data):
+        if "ResetType" in reset_data:
+            value = reset_data['ResetType']
             valid_values = self.res_data["Actions"]["#Manager.Reset"]["ResetType@Redfish.AllowableValues"]
             if value in valid_values:
                 # it is a supoported reset action  modify other properties appropritely
@@ -124,7 +124,7 @@ class RfManagerEthernetColl(RfCollection):
 
 # the Manager Ethernet Instance
 class RfManagerEthernet(RfResource):
-    def patchResource(self, patchData):
+    def patch_resource(self, patch_data):
         # TODO: check and save the data
         # for now, just return ok w/ 204 no content
         return 0, 204, None, None
