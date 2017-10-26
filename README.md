@@ -37,12 +37,12 @@ is a Python34 real simulator of the "simple monolithic server" feature profile.
 		-h,  --help,   --- help
 		-H<hostIP>,  --Host=<hostIp>   --- host IP address. dflt=127.0.0.1
 		-P<port>,--Port=<port> --- the port to use. dflt=5000
-		-p<provile>, --profile=<profile>   --- the Redfish profile to use. dflt="SimpleOcpServerV1"
+		-p<profile_path>, --profile=<profile_path>   --- the path to the Redfish profile to use. dflt="SimpleOcpServerV1"
     
     
 ## Implementation
 * The simulation includes an http server, RestEngine, and dynamic Redfish datamodel.
-* You can GET, PATHCH,... to the service just like a real Redfish service.
+* You can GET, PATCH,... to the service just like a real Redfish service.
 * Both Basic and Redfish Session/Token authentication are supported 
   * for a single user/passwd and token
   * the user/passwd is:   root/password123456    

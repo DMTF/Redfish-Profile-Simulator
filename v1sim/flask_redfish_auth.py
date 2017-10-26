@@ -44,11 +44,11 @@ adapted from:
 """
 
 from functools import wraps
-from hashlib import md5
-from random import Random, SystemRandom
-from flask import request, make_response, session
 
-#this is the Base HTTP Auth class that is used to derive the Redfish "Basic or Token Auth" class
+from flask import request, make_response
+
+
+# this is the Base HTTP Auth class that is used to derive the Redfish "Basic or Token Auth" class
 class HTTPAuth(object):
     def __init__(self, scheme=None, realm=None):
         def default_get_password(userx):
@@ -56,10 +56,10 @@ class HTTPAuth(object):
 
         def default_basic_auth_error():
             return "Unauthorized Access"
-        
+
         def default_token_auth_error():
             return "Unauthorized Access. Invalid authentication token"
-        
+
         self.scheme = scheme
         self.realm = realm or "Authentication Required"
         self.get_password(default_get_password)
@@ -69,7 +69,7 @@ class HTTPAuth(object):
     def get_password(self, f):
         self.get_password_callback = f
         return f
-    
+
     def token_error_handler(self, f):
         @wraps(f)
         def decorated(*args, **kwargs):
@@ -78,9 +78,10 @@ class HTTPAuth(object):
                 res = make_response(res)
                 res.status_code = 401
             return res
+
         self.auth_token_error_callback = decorated
         return decorated
-    
+
     def basic_error_handler(self, f):
         @wraps(f)
         def decorated(*args, **kwargs):
@@ -91,10 +92,11 @@ class HTTPAuth(object):
             if 'WWW-Authenticate' not in res.headers.keys():
                 res.headers['WWW-Authenticate'] = self.authenticate_header()
             return res
+
         self.auth_basic_error_callback = decorated
         return decorated
 
-    #for redfish, we need to hook this to check if its token auth before trying basic auth
+    # for redfish, we need to hook this to check if its token auth before trying basic auth
     def rfAuthRequired(self, f):
         @wraps(f)
         def decorated(*args, **kwargs):
@@ -107,35 +109,36 @@ class HTTPAuth(object):
             # Access-Control-* headers, and will fail if it returns 401.
             if request.method != 'OPTIONS':
                 # auth is None if the Basic auth header didn't come in the request
-                found_token=False
-                if( auth is None ):
+                found_token = False
+                if (auth is None):
                     ###print("auth is None")
-                    #check if we have a redfish auth token
-                    hdr_token_key="X-Auth-Token"
-                    auth_token=request.headers.get(hdr_token_key)
+                    # check if we have a redfish auth token
+                    hdr_token_key = "X-Auth-Token"
+                    auth_token = request.headers.get(hdr_token_key)
                     ###print("token={}".format(auth_token))
-                    if( auth_token is not None):
-                        found_token=True
-                        #yeah!  we have an auth token in the headers
-                        authOk=self.verify_token_callback(auth_token)
+                    if (auth_token is not None):
+                        found_token = True
+                        # yeah!  we have an auth token in the headers
+                        authOk = self.verify_token_callback(auth_token)
                         ###print("verify_token={}".format(authOk))
-                        if( authOk is not True ):
-                            #we had an auth token, but it didn't validate
-                            return( self.auth_token_error_callback())
+                        if (authOk is not True):
+                            # we had an auth token, but it didn't validate
+                            return (self.auth_token_error_callback())
 
                 # now continue with normal Basic Auth validation
-                if( found_token is not True):
+                if (found_token is not True):
                     ###print("try basic")
                     if auth:
                         password = self.get_password_callback(auth.username)
                     else:
                         password = None
                     ###print("basic auth: auth={}, pwd={}".format(auth,password))
-                    if( not self.authenticate(auth, password)):
-                        return( self.auth_basic_error_callback())
+                    if (not self.authenticate(auth, password)):
+                        return (self.auth_basic_error_callback())
             ###print("now execute the function")
-            return(f(*args, **kwargs))
-        return(decorated)
+            return (f(*args, **kwargs))
+
+        return (decorated)
 
     def username(self):
         if not request.authorization:
@@ -159,10 +162,10 @@ class RfHTTPBasicOrTokenAuth(HTTPAuth):
         self.verify_password_callback = f
         return f
 
-    def verify_token(self,f):
+    def verify_token(self, f):
         self.verify_token_callback = f
         return f
-    
+
     def authenticate_header(self):
         return '{0} realm="{1}"'.format(self.scheme or 'Basic', self.realm)
 
@@ -184,6 +187,7 @@ class RfHTTPBasicOrTokenAuth(HTTPAuth):
                 client_password = self.hash_password_callback(username,
                                                               client_password)
         return client_password == stored_password
+
 
 '''
 class HTTPDigestAuth(HTTPAuth):
@@ -248,7 +252,7 @@ class HTTPDigestAuth(HTTPAuth):
     def authenticate_header(self):
         session["auth_nonce"] = self.get_nonce()
         session["auth_opaque"] = self.get_opaque()
-        return '{0} realm="{1}",nonce="{2}",opaque="{3}"'.format(
+        return '{0} realm="{1}",nonce="{49}",opaque="{3}"'.format(
             self.scheme or 'Digest', self.realm, session["auth_nonce"],
             session["auth_opaque"])
 

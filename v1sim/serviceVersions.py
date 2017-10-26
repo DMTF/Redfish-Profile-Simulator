@@ -4,8 +4,6 @@
 
 from .resource import RfResource
 
+
 class RfServiceVersions(RfResource):
     pass
-        
-
-

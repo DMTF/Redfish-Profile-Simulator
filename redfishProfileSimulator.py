@@ -10,21 +10,22 @@ import sys
 import getopt
 import os
 
-rfVersion="0.9.2"
-rfProgram1="redfishProfileSimulator"
-rfProgram2="                "
-rfUsage1="[-Vh]  [--Version][--help]"
-rfUsage2="[-H<hostIP>] [-P<port>] [-p<profile>]"
-rfUsage3="[--Host=<hostIP>] [--Port=<port>] [--profile=<profile>]"
+rfVersion = "0.9.49"
+rfProgram1 = "redfishProfileSimulator"
+rfProgram2 = "                "
+rfUsage1 = "[-Vh]  [--Version][--help]"
+rfUsage2 = "[-H<hostIP>] [-P<port>] [-p<profile_path>]"
+rfUsage3 = "[--Host=<hostIP>] [--Port=<port>] [--profile_path=<profile_path>]"
 
 
-def rfUsage():
+def rf_usage():
         print("Usage:")
-        print("  ",rfProgram1,"  ",rfUsage1)
-        print("  ",rfProgram1,"  ",rfUsage2)
-        print("  ",rfProgram2,"  ",rfUsage3)
+        print("  ", rfProgram1, "  ", rfUsage1)
+        print("  ", rfProgram1, "  ", rfUsage2)
+        print("  ", rfProgram2, "  ", rfUsage3)
 
-def rfHelp():
+
+def rf_help():
         print(rfProgram1,"implements a simulation of a redfish service for the \"Simple OCP Server V1\" Mockup.")
         print(" The simulation includes an http server, RestEngine, and dynamic Redfish datamodel.")
         print(" You can GET, PATHCH,... to the service just like a real Redfish service.")
@@ -39,79 +40,71 @@ def rfHelp():
         print(" By default, the simulation runs on localhost (127.0.0.1), on port 5000.")
         print(" These can be changed with CLI options: -P<port> -H <hostIP>  | --port=<port> --host=<hostIp>")
         print("")
-        print("Version: ",rfVersion)
-        rfUsage()
+        print("Version: ", rfVersion)
+        rf_usage()
         print("")
-        print("       -V,          --Version,            --- the program version")
-        print("       -h,          --help,               --- help")
-        print("       -H<hostIP>,  --Host=<hostIp>       --- host IP address. dflt=127.0.0.1")
-        print("       -P<port>,    --Port=<port>         --- the port to use. dflt=5000")
-        print("       -p<profile>, --profile=<profile> --- the Redfish profile to use. dflt=\"SimpleOcpServerV1\" ")
+        print("       -V,          --Version,                       --- the program version")
+        print("       -h,          --help,                          --- help")
+        print("       -H<hostIP>,  --Host=<hostIp>                  --- host IP address. dflt=127.0.0.1")
+        print("       -P<port>,    --Port=<port>                    --- the port to use. dflt=5000")
+        print("       -p<profile_path>, --profile=<profile_path>    --- the path to the Redfish profile to use. "
+              "dflt=\"./MockupData/SimpleOcpServerV1\" ")
 
 
 def main(argv):
-    #set default option args
-    rfProfile="SimpleOcpServerV1"
-    rfHost="127.0.0.1"
-    rfPort=5000
+    # set default option args
+    rf_profile_path = os.path.abspath("./MockupData/SimpleOcpServerV1")
+    rf_host = "127.0.0.1"
+    rf_port = 5000
     
     try:
-        opts, args = getopt.getopt(argv[1:],"VhH:P:p:",
-                        ["Version", "help", "Host=", "Port=", "profile="])
+        opts, args = getopt.getopt(argv[1:], "VhH:P:p:",
+                                   ["Version", "help", "Host=", "Port=", "profile="])
     except getopt.GetoptError:
         print(rfProgram1, ":  Error parsing options")
-        rfUsage()
+        rf_usage()
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            rfHelp()
+            rf_help()
             sys.exit(0)
         elif opt in ("-V", "--Version"):
-            print("Version:",rfVersion)
+            print("Version:", rfVersion)
             sys.exit(0)
         elif opt in ("-p", "--profile"):
-            rfProfile=arg
-        elif opt in ("--Host="):
-            rfHost=arg
-        elif opt in ("--Port="):
-            rfPort=int(arg)
+            rf_profile_path = arg
+        elif opt in "--Host=":
+            rf_host = arg
+        elif opt in "--Port=":
+            rf_port=int(arg)
         else:
-            print("  ",rfProgram1, ":  Error: unsupported option")
-            rfUsage()
+            print("  ", rfProgram1, ":  Error: unsupported option")
+            rf_usage()
             sys.exit(2)
 
     print("{} Version: {}".format(rfProgram1,rfVersion))
-    print("   Starting redfishProfileSimulator at:  hostIP={},  port={}".format(rfHost, rfPort))
-    print("   Using Profile={}".format(rfProfile))
+    print("   Starting redfishProfileSimulator at:  hostIP={},  port={}".format(rf_host, rf_port))
+    print("   Using Profile at {}".format(rf_profile_path))
 
-    if( rfProfile == "SimpleOcpServerV1"):     
-        print(" Running: SimpleOcpServerV1 Profile:  A simple monolythic server")
+    if os.path.isdir(rf_profile_path):
         # import the classes and code we run from main.
-        from SimpleOcpServerV1Sim import RfServiceVersions
-        from SimpleOcpServerV1Sim import RfServiceRoot
+        from v1sim.serviceVersions import RfServiceVersions
+        from v1sim.serviceRoot import RfServiceRoot
         # rfApi_SimpleServer is a function in ./RedfishProfileSim/redfishURIs.py.
         # It loads the flask APIs (URIs), and starts the flask service
-        from SimpleOcpServerV1Sim import rfApi_SimpleServer
-                         
-        #create the root service resource
-        profileMockupPath=os.path.abspath("./MockupData/SimpleOcpServerV1")
-        rootPath=os.path.normpath("redfish/v1")
+        from v1sim.redfishURIs import rfApi_SimpleServer
 
-        #create the version resource for GET /redfish
-        versions=RfServiceVersions(profileMockupPath,"redfish")  
-        root=RfServiceRoot(profileMockupPath, rootPath)
-                         
-        #start the flask REST API service
-        rfApi_SimpleServer(root,versions,host=rfHost,port=rfPort)
+        # create the root service resource
+        root_path = os.path.normpath("redfish/v1")
 
-    elif( rfProfile == "SimpleOcpServerV2" ):
-        print("   v2 profile not implemented")
-                         
-    elif( rfProfile == "SimpleEnterpriseServer"):
-        print(" Running: SimpleEnterpriseServer Profile:  A simple Enterprise monolythic server")
+        # create the version resource for GET /redfish
+        versions = RfServiceVersions(rf_profile_path, "redfish")
+        root = RfServiceRoot(rf_profile_path, root_path)
 
+        # start the flask REST API service
+        rfApi_SimpleServer(root, versions, host=rf_host, port=rf_port)
     else:
-        print("invalid profile")
+        print("invalid profile path")
 
 
 if __name__ == "__main__":
