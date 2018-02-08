@@ -32,10 +32,10 @@ class RfVLan(RfResource):
     pass
 
 
-class RfNetworkAdapterCollection(RfCollection):
+class RfNetworkInterfaceCollection(RfCollection):
     def element_type(self):
-        return RfNetworkAdapter
+        return RfNetworkInterface
 
 
-class RfNetworkAdapter(RfResource):
+class RfNetworkInterface(RfResource):
     pass

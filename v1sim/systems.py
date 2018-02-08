@@ -5,7 +5,7 @@
 import os
 
 from .common_services import RfLogServiceCollection
-from .network import RfEthernetCollection, RfNetworkAdapterCollection
+from .network import RfEthernetCollection, RfNetworkInterfaceCollection
 from .resource import RfResource, RfCollection
 from .storage import RfSimpleStorageCollection, RfSmartStorage
 
@@ -20,7 +20,7 @@ class RfSystemObj(RfResource):
         resource_path = os.path.join(base_path, rel_path)
         contents = os.listdir(resource_path)
         for item in contents:
-            if item == "bios":
+            if item == "Bios":
                 self.components[item] = RfBios(base_path, os.path.join(rel_path, item), parent=self)
             elif item == "EthernetInterfaces":
                 self.components[item] = RfEthernetCollection(base_path, os.path.join(rel_path, item), parent=self)
@@ -36,10 +36,10 @@ class RfSystemObj(RfResource):
                 self.components[item] = RfSmartStorage(base_path, os.path.join(rel_path, item), parent=self)
             elif item == "SecureBoot":
                 self.components[item] = RfSecureBoot(base_path, os.path.join(rel_path, item), parent=self)
-            elif item == "NetworkAdapters":
-                self.components[item] = RfNetworkAdapterCollection(base_path, os.path.join(rel_path, item), parent=self)
-            elif item == "PCIDevices":
-                self.components[item] = RfPCIDeviceCollection(base_path, os.path.join(rel_path, item), parent=self)
+            elif item == "NetworkInterfaces":
+                self.components[item] = RfNetworkInterfaceCollection(base_path, os.path.join(rel_path, item), parent=self)
+            elif item == "PCIeDevices":
+                self.components[item] = RfPCIeDeviceCollection(base_path, os.path.join(rel_path, item), parent=self)
             elif item == "PCISlots":
                 self.components[item] = RfPCISlotCollection(base_path, os.path.join(rel_path, item), parent=self)
             elif item == "FirmwareInventory":
@@ -154,12 +154,12 @@ class RfBiosSettings(RfResource):
         return 0, 204, None, None
 
 
-class RfPCIDeviceCollection(RfCollection):
+class RfPCIeDeviceCollection(RfCollection):
     def element_type(self):
-        return RfPCIDevice
+        return RfPCIeDevice
 
 
-class RfPCIDevice(RfResource):
+class RfPCIeDevice(RfResource):
     pass
 
 
