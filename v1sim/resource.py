@@ -4,8 +4,12 @@
 
 import json
 import os
+import sys
 
 import flask
+
+if sys.version_info >= (3, 5):
+    from typing import Type
 
 
 class RfResource:
@@ -70,7 +74,7 @@ class RfResourceRaw:
         pass
 
     def get_resource(self):
-        return self.res_data
+        return flask.Response(response=self.res_data, status=200, mimetype='application/xml')
 
 
 class RfCollection(RfResource):
@@ -81,7 +85,7 @@ class RfCollection(RfResource):
         for item in contents:
             item_path = os.path.join(subpath, item)
             if os.path.isdir(item_path):
-                etype = self.element_type()
+                etype = self.element_type()  # type: Type[RfResource]
                 self.elements[item] = etype(base_path,
                                             os.path.normpath("%s/%s" % (rel_path, item)),
                                             parent=self)
