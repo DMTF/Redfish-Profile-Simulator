@@ -70,7 +70,7 @@ class RfResourceRaw:
         pass
 
     def get_resource(self):
-        return self.res_data
+        return flask.Response(response=self.res_data, status=200, mimetype='application/xml')
 
 
 class RfCollection(RfResource):

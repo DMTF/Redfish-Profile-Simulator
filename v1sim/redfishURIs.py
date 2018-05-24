@@ -8,7 +8,7 @@ from flask import Flask
 from flask import request
 
 from .flask_redfish_auth import RfHTTPBasicOrTokenAuth
-from .resource import RfResource, RfCollection
+from .resource import RfResource, RfResourceRaw, RfCollection
 
 
 def rfApi_SimpleServer(root, versions, host="127.0.0.1", port=5000):
@@ -252,7 +252,7 @@ def rfApi_SimpleServer(root, versions, host="127.0.0.1", port=5000):
                 else:
                     current_obj = result
 
-        if isinstance(result, RfResource):
+        if isinstance(result, (RfResource, RfResourceRaw)):
             return result.get_resource()
         else:
             return result
