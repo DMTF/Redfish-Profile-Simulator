@@ -165,7 +165,7 @@ class RfPCIeDevice(RfResource):
 
 class RfPCISlotCollection(RfCollection):
     def element_type(self):
-        return RfPCIDevice
+        return RfPCISlot
 
 
 class RfPCISlot(RfResource):

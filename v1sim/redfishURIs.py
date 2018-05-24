@@ -47,11 +47,16 @@ def rfApi_SimpleServer(root, versions, host="127.0.0.1", port=5000):
     def rf_versions():
         return versions.get_resource()
 
-    # GET /rest/v1
+    # GET /redfish/v1
     @app.route("/redfish/v1", methods=['GET'])
     @app.route("/redfish/v1/", methods=['GET'])
     def rf_service_root():
         return root.get_resource()
+
+    # GET /redfish/v1/$metadata
+    @app.route("/redfish/v1/$metadata", methods=['GET'])
+    def rf_metadata(rf_path='$metadata'):
+        return resolve_path(root, rf_path)
 
     @app.route("/redfish/v1/<path:rf_path>", methods=['GET'])
     @app.route("/redfish/v1/<path:rf_path>/", methods=['GET'])
