@@ -60,6 +60,7 @@ def rfApi_SimpleServer(root, versions, host="127.0.0.1", port=5000):
 
     # GET /redfish/v1/odata
     @app.route("/redfish/v1/odata", methods=['GET'])
+    @app.route("/redfish/v1/odata/", methods=['GET'])
     def rf_odata(rf_path='odata'):
         return resolve_path(root, rf_path)
 
