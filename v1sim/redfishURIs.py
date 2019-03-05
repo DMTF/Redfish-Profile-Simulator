@@ -58,6 +58,11 @@ def rfApi_SimpleServer(root, versions, host="127.0.0.1", port=5000):
     def rf_metadata(rf_path='$metadata'):
         return resolve_path(root, rf_path)
 
+    # GET /redfish/v1/odata
+    @app.route("/redfish/v1/odata", methods=['GET'])
+    def rf_odata(rf_path='odata'):
+        return resolve_path(root, rf_path)
+
     @app.route("/redfish/v1/<path:rf_path>", methods=['GET'])
     @app.route("/redfish/v1/<path:rf_path>/", methods=['GET'])
     @auth.rfAuthRequired
