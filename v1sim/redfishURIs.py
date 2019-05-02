@@ -223,7 +223,7 @@ def rfApi_SimpleServer(root, versions, host="127.0.0.1", port=5000):
             print("resp:{}".format(resp))
             hdr = {"X-Auth-Token": "123456SESSIONauthcode",
                    "Location": "/redfish/v1/SessionService/Sessions/SESSION123456"}
-            return resp, 200, hdr
+            return resp, 201, hdr
         else:
             return "", 401
 
