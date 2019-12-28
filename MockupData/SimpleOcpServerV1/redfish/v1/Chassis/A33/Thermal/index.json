@@ -16,8 +16,8 @@
             "UpperThresholdNonCritical": 35,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake"
         },
         {
@@ -33,8 +33,8 @@
             "UpperThresholdNonCritical": 30,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "SystemBoard"
         },
         {
@@ -49,8 +49,8 @@
             "ReadingCelsius": 45,
             "UpperThresholdNonCritical": 60,
             "UpperThresholdCritical": 82,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU"
         },
         {
@@ -65,8 +65,8 @@
             "ReadingCelsius": 46,
             "UpperThresholdNonCritical": 60,
             "UpperThresholdCritical": 82,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU"
         }
     ],
