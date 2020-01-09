@@ -24,9 +24,6 @@
         "ManagerForServers": [
             {
                 "@odata.id": "/redfish/v1/Systems/2M220100SL"
-            },
-            {
-                "@odata.id": "/redfish/v1/Systems/"
             }
         ],
         "ManagerForChassis": [

@@ -10,12 +10,12 @@ from .resource import RfResource, RfCollection
 class RfAccountServiceObj(RfResource):
     # create instance of each AccountService
     def create_sub_objects(self, base_path, rel_path):
-        if os.path.isdir(os.path.join(base_path, "Accounts")):
+        if os.path.isdir(os.path.join(base_path, os.path.normpath("redfish/v1/AccountService/Accounts"))):
             self.components["Accounts"] = RfAccountCollection(base_path,
                                                               os.path.normpath("redfish/v1/AccountService/Accounts"),
                                                               parent=self)
 
-        if os.path.isdir(os.path.join(base_path, "Accounts")):
+        if os.path.isdir(os.path.join(base_path, os.path.normpath("redfish/v1/AccountService/Roles"))):
             self.components["Roles"] = RfRoleCollection(base_path,
                                                         os.path.normpath("redfish/v1/AccountService/Roles"),
                                                         parent=self)
