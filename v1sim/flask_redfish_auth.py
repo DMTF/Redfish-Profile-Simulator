@@ -1,6 +1,6 @@
 # Copyright Notice:
 # Copyright 2016 Distributed Management Task Force, Inc. All rights reserved.
-# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/blob/master/LICENSE.md
+# License: BSD 3-Clause License. For full text see link: https://github.com/DMTF/Redfish-Profile-Simulator/blob/main/LICENSE.md
 
 """
 flask_redfish_auth
@@ -11,7 +11,7 @@ adapted from:
     This module provides Basic and Digest HTTP authentication for Flask routes.
     :copyright: (C) 2014 by Miguel Grinberg.
     :license:   MIT, see LICENSE for more details, 
-        at https://github.com/miguelgrinberg/Flask-HTTPAuth/blob/master/LICENSE
+        at https://github.com/miguelgrinberg/Flask-HTTPAuth/blob/main/LICENSE
 
     see documentation at:    http://flask.pocoo.org/snippets/8/
     code and docs at:       https://github.com/miguelgrinberg/flask-httpauth/
