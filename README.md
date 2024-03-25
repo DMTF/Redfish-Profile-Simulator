@@ -2,6 +2,8 @@ Copyright 2016-2024 Distributed Management Task Force, Inc. All rights reserved.
 
 # Redfish Profile Simulator
 
+[![deprecated](http://badges.github.io/stability-badges/dist/deprecated.svg)](http://github.com/badges/stability-badges)
+
 ## Deprecated
 
 This tool is deprecated in favor of other mockup server tools:
