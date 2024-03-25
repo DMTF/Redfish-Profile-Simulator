@@ -1,6 +1,14 @@
-Copyright 2016-2018 Distributed Management Task Force, Inc. All rights reserved.
+Copyright 2016-2024 Distributed Management Task Force, Inc. All rights reserved.
 
 # Redfish Profile Simulator
+
+## Deprecated
+
+This tool is deprecated in favor of other mockup server tools:
+
+* [Redfish-Mockup-Server](https://github.com/DMTF/Redfish-Mockup-Server): Serve static resources for `GET` requests.
+* [Redfish-Interface-Emulator](https://github.com/DMTF/Redfish-Interface-Emulator): A more functional service that implements modification requests and actions.
+* [Swordfish-API-Emulator](https://github.com/SNIA/Swordfish-API-Emulator): A SNIA extension to the previous tool with more built-in functionality supported.
 
 ## About
 
@@ -25,7 +33,7 @@ Copyright 2016-2018 Distributed Management Task Force, Inc. All rights reserved.
 ### Current Limitation:
 
 * supports a single user/passwd and token
-* the user/passwd is:   root/password123456    
+* the user/passwd is:   root/password123456
 * The authToken for Session Auth is: 123456SESSIONauthcode
 * Supports only HTTP  (not HTTPS)
 * with redfishtool, use options: redfishtool.py -r127.0.0.1:5000 -u root -p password123456 -S Never <subcmd>
